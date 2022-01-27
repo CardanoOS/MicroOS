@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<constraints>
+
+  <overwrite>
+    <conditions>
+      <package>000product:MicroOS-ftp-ftp-aarch64</package>
+      <package>000product:MicroOS-ftp-ftp-x86_64</package>
+    </conditions>
+    <hardware>
+      <disk>
+         <size unit="G">25</size>
+      </disk>
+    </hardware>
+  </overwrite>
+
+</constraints>

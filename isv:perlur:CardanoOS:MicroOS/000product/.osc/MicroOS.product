@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<productdefinition xmlns:xi="http://www.w3.org/2001/XInclude">
+  <products>
+    <product>
+      <vendor>openSUSE</vendor>
+      <name>MicroOS</name>
+      <version>15.2</version>
+      <release>1</release>
+
+      <endoflife>2020-11-30</endoflife>
+      <codestream>
+        <name>openSUSE MicroOS 15</name>
+        <endoflife>2021-11-30</endoflife>
+      </codestream>
+
+
+      <productline>MicroOS</productline>
+
+      <!-- Ensure we have valid distrotarget - used by "zypper tos" - boo#977052 -->
+      <register>
+        <updates>
+          <distrotarget arch="x86_64" >openSUSE-Leap-15.2-x86_64</distrotarget>
+          <distrotarget arch="aarch64" >openSUSE-Leap-15.2-aarch64</distrotarget>
+        </updates>
+      </register>
+
+      <updaterepokey>000000000</updaterepokey>
+      <summary>openSUSE MicroOS 15.2</summary> <!-- one line only -->
+      <shortsummary>openSUSE MicroOS</shortsummary>
+      <description>openSUSE MicroOS 15.2</description>
+
+      <!-- Available languages for collecting packages and during installation and runtime -->
+      <linguas>
+        <language>en</language>
+      </linguas>
+
+      <urls>
+          <url name="releasenotes">http://doc.opensuse.org/release-notes/%{_target_cpu}/openSUSE/Leap/15.2/release-notes-openSUSE.rpm</url>
+          <!-- <url name="smolt">http://smolt.opensuse.org/register.pl</url>
+               <url name="register">http://register.novell.com/</url> -->
+          <url name="repository" arch="x86_64">http://download.opensuse.org/distribution/leap/15.2/repo/oss/</url>
+	  <url name="repository" arch="aarch64">http://download.opensuse.org/ports/%{_target_cpu}/distribution/leap/15.2/repo/oss/</url>
+          <!-- url name="update">http://download.opensuse.org/update/factory/</url> -->
+      </urls>
+
+      <buildconfig>
+        <!-- This section is needed to generate the installation media -->
+        <producttheme>MicroOS</producttheme>
+	<betaversion>Beta</betaversion>
+        <create_flavors>true</create_flavors>
+      </buildconfig>
+
+      <installconfig>
+          <!-- All flags needed during installation -->
+          <defaultlang>en_US</defaultlang>
+          <distribution>openSUSE</distribution>
+      </installconfig>
+
+      <!-- All Flags needed in the running system -->
+      <runtimeconfig/>
+    </product>
+  </products>
+
+  <!-- Default conditionals, repositories and archsets get imported -->
+  <xi:include href="defaults-conditionals.include"/>
+  <xi:include href="defaults-archsets.include"/>
+  <xi:include href="defaults-repositories.include"/>
+
+  <mediasets>
+    <!-- BEWARE: do not touch the naming here without adapting ftp upload scripts ! -->
+    <media type="ftp"
+      flavor="ftp"
+      sourcemedia="3" 
+      debugmedia="2" 
+      mediastyle="suse-tumbleweed"
+      create_pattern="false" 
+      repo_only="true" 
+      run_make_listings="true" 
+      use_required="true" 
+      use_recommended="true" 
+      use_suggested="false"
+      use_undecided="false">
+
+      <use group="opensuse_microos" create_pattern="false" />
+      <use group="opensuse_microos.x86_64" create_pattern="false" />
+      <use group="opensuse_microos.aarch64" create_pattern="false"/>
+
+      <archsets>
+	<archset ref="x86_64" />
+      </archsets>
+
+      <archsets>
+	<archset ref="aarch64" />
+      </archsets>
+
+      <metadata>
+	<package name="skelcd-installer-MicroOS" />
+	<package name="skelcd-control-MicroOS" />
+	<package name="skelcd-openSUSE" />
+      </metadata>
+    </media>
+
+    <media
+      type="dvd5"
+      flavor="dvd"
+      name="openSUSE-MicroOS-15.2-DVD" 
+      sourcemedia="0"
+      firmware="uefi"
+      mediastyle="openSUSE"
+      run_hybridiso="true"
+      run_media_check="true"
+      use_undecided="false"
+      create_pattern="false"
+      use_required="true"
+      use_recommended="true"
+      use_suggested="false">
+      <archsets>
+        <archset ref="x86_64"/>
+      </archsets>
+      <archsets>
+        <archset ref="aarch64"/>
+      </archsets>
+      <metadata>
+        <package name="skelcd-installer-MicroOS"/>
+        <!--package name="skelcd-control-MicroOS"/-->
+        <package name="skelcd-openSUSE"/>
+      </metadata>
+      <use group="opensuse_microos" create_pattern="false"/>
+      <use group="opensuse_microos.x86_64" create_pattern="false"/>
+      <use group="opensuse_microos.aarch64" create_pattern="false"/>
+    </media>
+
+    <media type="image"
+         flavor="appliance"
+         mediastyle="openSUSE"
+         name="openSUSE-MicroOS-appliance" >
+    <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+  </mediasets>
+
+  <xi:include href="NON_FTP_PACKAGES.group"/>
+  <xi:include href="NON_FTP_PACKAGES_OSS.group"/>
+  <xi:include href="opensuse_microos.group"/>
+
+</productdefinition>

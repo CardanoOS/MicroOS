@@ -1,0 +1,7 @@
+<package name="000product" project="openSUSE:Leap:15.2:MicroOS">
+  <title/>
+  <description>product container - openSUSE Leap 15.0</description>
+  <person userid="staging-bot" role="maintainer"/>
+  <bcntsynctag>product</bcntsynctag>
+</package>
+

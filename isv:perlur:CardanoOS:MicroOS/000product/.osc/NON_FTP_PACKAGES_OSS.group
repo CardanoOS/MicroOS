@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<group name="NON_FTP_PACKAGES_OSS">
+  <conditional name="drop_from_ftp"/>
+  <packagelist relationship="requires">
+    <package name="openSUSE-Addon-NonOss-release"/>
+    <package name="openSUSE-Addon-NonOss-release-addon-nonoss"/>
+    <package name="openSUSE-Addon-NonOss-release-biarch"/>
+    <package name="openSUSE-Addon-NonOss-release-ftp"/>
+    <package name="openSUSE-Addon-NonOss-release-ppc"/>
+  </packagelist>
+</group>

@@ -1,0 +1,10 @@
+<directory name="installation-images" rev="6" vrev="2" srcmd5="68845b7ffcbbfee40c54944f94d94cdf">
+  <entry name="_constraints" md5="e22a4ac4ec96ab9efc334f66b697c6af" size="110" mtime="1552474734" />
+  <entry name="_multibuild" md5="bab8feeb706c0cbc168188d09acdb91f" size="81" mtime="1606752386" />
+  <entry name="check-build.sh" md5="af68b4a720a25fe1c3e9b735591797b0" size="1614" mtime="1171482852" />
+  <entry name="installation-images-16.19.tar.xz" md5="f4e8b5296f9884271a3fde8f816d4508" size="178492" mtime="1601028967" />
+  <entry name="installation-images-rpmlintrc" md5="6f3febe62a0288fdbbd2090dfc0f8332" size="65" mtime="1487610970" />
+  <entry name="installation-images.changes" md5="d5773f94b4f2d929e3ab8c6c121af198" size="395478" mtime="1606752063" />
+  <entry name="installation-images.spec" md5="0dabd92bbbe4f4a08bf23211dd747e6f" size="23897" mtime="1606752301" />
+  <entry name="product_name" md5="d95bd24276208b006a23a801a46deeaf" size="273" mtime="1488445916" />
+</directory>

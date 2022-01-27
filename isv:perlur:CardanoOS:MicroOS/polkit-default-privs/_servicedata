@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/openSUSE/polkit-default-privs.git</param>
+              <param name="changesrevision">11fb10bebd7f1a768cc618c022b0eb063667978f</param></service></servicedata>

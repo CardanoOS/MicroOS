@@ -1,0 +1,6 @@
+<package name="setools" project="openSUSE:Leap:15.2:MicroOS">
+  <title>Policy analysis tools for SELinux</title>
+  <description>SETools is a collection of graphical tools, command-line tools, and  
+libraries designed to facilitate SELinux policy analysis.</description>
+</package>
+

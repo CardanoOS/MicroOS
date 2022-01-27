@@ -1,0 +1,74 @@
+From 94bd0cd56e53a2ab18b421d3cd21bb36b2bfeed1 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 16 Apr 2018 23:03:27 +0200
+Subject: [PATCH 1/2] udev: don't create by-partlabel/primary and .../logical
+ symlinks
+
+These links are created by libstorage / parted by default.  They are ambiguous
+and may be present hundred- or thousandfold on large systems. They are
+meaningless for device identification and may slow down udev processing. They
+aren't used anywhere.  Don't create them.
+
+A service has been added to detect at boot cases that likely need to be fixed:
+a warning is thrown at both the console and syslog to encourage sysadmin to
+consult the relevant TID explaining how to permanently fix the issue.
+
+[fbui: added the detection part]
+[fbui: fixes bsc#1089761]
+---
+ rules.d/60-persistent-storage.rules        |  2 +-
+ units/detect-part-label-duplicates.service | 16 ++++++++++++++++
+ units/meson.build                          |  2 ++
+ 3 files changed, 19 insertions(+), 1 deletion(-)
+ create mode 100644 units/detect-part-label-duplicates.service
+
+diff --git a/rules.d/60-persistent-storage.rules b/rules.d/60-persistent-storage.rules
+index fc7f733e20..95c4d5368e 100644
+--- a/rules.d/60-persistent-storage.rules
++++ b/rules.d/60-persistent-storage.rules
+@@ -122,6 +122,6 @@ ENV{DEVTYPE}=="partition", ENV{ID_WWN_WITH_EXTENSION}=="?*", SYMLINK+="disk/by-i
+ 
+ # by-partlabel/by-partuuid links (partition metadata)
+ ENV{ID_PART_ENTRY_UUID}=="?*", SYMLINK+="disk/by-partuuid/$env{ID_PART_ENTRY_UUID}"
+-ENV{ID_PART_ENTRY_SCHEME}=="gpt", ENV{ID_PART_ENTRY_NAME}=="?*", SYMLINK+="disk/by-partlabel/$env{ID_PART_ENTRY_NAME}"
++ENV{ID_PART_ENTRY_SCHEME}=="gpt", ENV{ID_PART_ENTRY_NAME}=="?*", ENV{ID_PART_ENTRY_NAME}!="primary|logical", SYMLINK+="disk/by-partlabel/$env{ID_PART_ENTRY_NAME}"
+ 
+ LABEL="persistent_storage_end"
+diff --git a/units/detect-part-label-duplicates.service b/units/detect-part-label-duplicates.service
+new file mode 100644
+index 0000000000..1fbca21146
+--- /dev/null
++++ b/units/detect-part-label-duplicates.service
+@@ -0,0 +1,16 @@
++[Unit]
++Description=Detect if the system suffers from bsc#1089761
++ConditionDirectoryNotEmpty=/run/udev/data
++
++[Service]
++RemainAfterExit=true
++StandardOutput=syslog+console
++SyslogLevel=warning
++ExecStart=/bin/sh -c " \
++    if [ $(grep -r "E:ID_PART_ENTRY_NAME=primary" /run/udev/data | wc -l) -ge 100 ]; then \
++      echo 'Warning: a high number of partitions uses \"primary\" or \"logical\" as'; \
++      echo 'partition label name, which may cause slow-down in the boot process.'; \
++      echo 'To prevent it, a workaround is temporarly in place but we recommend to'; \
++      echo 'refer to TID #7023057 in order to permanently fix this issue (as the'; \
++      echo 'workaround will be dropped in the future).'; \
++    fi"
+diff --git a/units/meson.build b/units/meson.build
+index 275daad3f4..486b347f2f 100644
+--- a/units/meson.build
++++ b/units/meson.build
+@@ -10,6 +10,8 @@ units = [
+         ['cryptsetup-pre.target',               'HAVE_LIBCRYPTSETUP'],
+         ['cryptsetup.target',                   'HAVE_LIBCRYPTSETUP',
+          'sysinit.target.wants/'],
++        ['detect-part-label-duplicates.service', '',
++         'sysinit.target.wants/'],
+         ['dev-hugepages.mount',                 '',
+          'sysinit.target.wants/'],
+         ['dev-mqueue.mount',                    '',
+-- 
+2.26.2
+

@@ -1,0 +1,3 @@
+#!/bin/bash
+btrfs prop set -t s / ro true
+mount -o remount,ro /

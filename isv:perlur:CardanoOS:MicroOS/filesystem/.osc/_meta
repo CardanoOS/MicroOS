@@ -1,0 +1,6 @@
+<package name="filesystem" project="openSUSE:Leap:15.2:MicroOS">
+  <title>Basic Directory Layout</title>
+  <description>This package installs the basic directory structure. It also includes
+the home directories of system users.</description>
+</package>
+

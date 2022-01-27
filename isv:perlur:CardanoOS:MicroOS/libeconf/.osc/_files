@@ -1,0 +1,9 @@
+<directory name="libeconf" rev="4" vrev="4" srcmd5="ffa53f64c8454e97c8f12f35e9cf1ae2">
+  <serviceinfo code="succeeded" xsrcmd5="40bea43bfccd6cb9f36e7949158d9917" />
+  <entry name="_service" md5="77813c09d01753ee0bbf7a66f488f8c1" size="512" mtime="1594393803" />
+  <entry name="_servicedata" md5="c720d0b67e43558ce5d550e45faea06a" size="219" mtime="1594415783" />
+  <entry name="baselibs.conf" md5="6cb7ede6cea12615d2c6a5aa99fd9cdd" size="10" mtime="1566046364" />
+  <entry name="libeconf-0.3.8+git20200710.5126fff.tar.xz" md5="26d7d2ff0dc88565ccdca60f83d5c36c" size="31916" mtime="1594415783" />
+  <entry name="libeconf.changes" md5="46b3cb8783bc6b7708c6a84f1c402aa8" size="12547" mtime="1603369494" />
+  <entry name="libeconf.spec" md5="57600b9e1c09faf917364f936bcbd5a2" size="2163" mtime="1603369164" />
+</directory>

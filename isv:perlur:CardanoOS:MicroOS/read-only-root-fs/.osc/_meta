@@ -1,0 +1,5 @@
+<package name="read-only-root-fs" project="openSUSE:Leap:15.2:MicroOS">
+  <title/>
+  <description>needed for /boot/writable </description>
+</package>
+

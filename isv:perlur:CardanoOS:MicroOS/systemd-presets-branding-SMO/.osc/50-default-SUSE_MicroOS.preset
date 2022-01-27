@@ -1,0 +1,21 @@
+enable transactional-update.timer
+enable create-dirs-from-rpmdb.service
+enable rebootmgr.service
+enable issue-add-ssh-keys.service
+enable ignition-firstboot-complete.service
+enable cloud-config.service
+enable cloud-final.service
+enable cloud-init-local.service
+enable cloud-init.service
+enable health-checker.service
+enable kubelet.service
+enable container-image-prune.timer
+disable purge-kernels.service
+enable sshd.service
+# pulled in by kiwi stuff by default
+disable lvm2-monitor.service
+# optional packages
+enable man-db-create.service
+
+# this one is just plain broken
+disable btrfsmaintenance-refresh.service

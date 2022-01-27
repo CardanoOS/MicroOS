@@ -1,0 +1,8 @@
+<directory name="microos-tools" rev="9" vrev="1" srcmd5="16454033118de90af1b17896837d5963">
+  <entry name="microos-tmp.conf" md5="0c101acb580165bfed1f0a7858ab2f82" size="419" mtime="1603985800" />
+  <entry name="microos-tools-2.9.tar.xz" md5="8af1057d96b8b31f8d6dd9eef5636d26" size="75388" mtime="1604998896" />
+  <entry name="microos-tools-rpmlintrc" md5="f2b26eca0773592155f21f4003947ee8" size="311" mtime="1596532104" />
+  <entry name="microos-tools.changes" md5="da578ffb9f4fa31ac01ec2a08c58693b" size="16640" mtime="1604998897" />
+  <entry name="microos-tools.spec" md5="a3ddedf788e185626f0146787b26e1e9" size="3036" mtime="1604998897" />
+  <entry name="tmp.mount" md5="add3ae4207048b5b18bdd57240cd4f05" size="769" mtime="1597395528" />
+</directory>

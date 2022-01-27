@@ -1,0 +1,5 @@
+<package name="systemd-default-settings" project="openSUSE:Leap:15.2:MicroOS">
+  <title>The systemd settings overriden for SUSE distributions</title>
+  <description/>
+</package>
+

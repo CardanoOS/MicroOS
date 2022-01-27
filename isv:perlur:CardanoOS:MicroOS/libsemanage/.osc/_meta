@@ -1,0 +1,7 @@
+<package name="libsemanage" project="openSUSE:Leap:15.2:MicroOS">
+  <title>Python bindings for libsemanage</title>
+  <description>This package contains the python bindings for developing
+SELinux management applications.</description>
+  <bcntsynctag>python-semanage</bcntsynctag>
+</package>
+

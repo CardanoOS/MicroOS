@@ -1,0 +1,10 @@
+<directory name="openSUSE-MicroOS" rev="45" vrev="45" srcmd5="14fab554a7e4cf14aee240acf8d8e93c">
+  <entry name="LICENSE" md5="dd56cf2476a0641019bd082e9aff122f" size="1023" mtime="1523285119" />
+  <entry name="_constraints" md5="30434db849505dce647d92d4df762b15" size="102" mtime="1606231440" />
+  <entry name="_multibuild" md5="b0bc069514b0e3c79cc3b4c1625c0f25" size="428" mtime="1606915518" />
+  <entry name="config.sh" md5="11c4cbdf94d3571313bd4fb5e78dfe3a" size="6673" mtime="1593605498" />
+  <entry name="editbootinstall_pine64.sh" md5="b7885992e65ee3831003f9abe3a6d556" size="1006" mtime="1575388224" />
+  <entry name="editbootinstall_rpi.sh" md5="2d4abfcca1886e874174efb160183511" size="1042" mtime="1575388224" />
+  <entry name="openSUSE-MicroOS.changes" md5="abecc6ad9d289fe080bd35e8253fc626" size="15616" mtime="1608037877" />
+  <entry name="openSUSE-MicroOS.kiwi" md5="dc8709bbae7d39eb87648202b7fb4250" size="32237" mtime="1611831684" />
+</directory>

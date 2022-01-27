@@ -1,0 +1,11 @@
+<directory name="combustion" rev="2" vrev="2" srcmd5="9d96cd9ccc5df0fc2eb9d531a69eaf3d">
+  <entry name="LICENSE" md5="b234ee4d69f5fce4486a80fdaf4a4263" size="18092" mtime="1594988950" />
+  <entry name="README" md5="14facfe03a3d54b17ff01d6869c16679" size="3333" mtime="1600341486" />
+  <entry name="combustion" md5="884862c2fd1631c540df188a3f73b6c4" size="4525" mtime="1603351644" />
+  <entry name="combustion-prepare.service" md5="9670446f8afdd4cc7f23f69f53a8ee96" size="975" mtime="1600343578" />
+  <entry name="combustion.changes" md5="ecc9a979c125428d39b0798262a3b3f9" size="2767" mtime="1603351644" />
+  <entry name="combustion.rules" md5="085072327b1a0d57a40005be1f2b8b5c" size="1488" mtime="1603351644" />
+  <entry name="combustion.service" md5="8ea909d62bb0f21476d4c7ea43a1566d" size="829" mtime="1600332311" />
+  <entry name="combustion.spec" md5="c714554b4522707bf622220652ac9184" size="2388" mtime="1603351644" />
+  <entry name="module-setup.sh" md5="93533cf75e3c5167a3dcd1f0d99af8a9" size="936" mtime="1601979687" />
+</directory>

@@ -1,0 +1,13 @@
+<directory name="libselinux-bindings" rev="1" vrev="1" srcmd5="2936abdeee3b2378ca58bd4ff3b73b98">
+  <entry name="baselibs.conf" md5="9e63d036fbad086fdfc24ef32540006c" size="12" mtime="1219426281" />
+  <entry name="libselinux-3.1.tar.gz" md5="693680c021feb69a4b258b0370021461" size="204703" mtime="1594715186" />
+  <entry name="libselinux-bindings.changes" md5="2c937da85738a4de576d6b1bed0567fa" size="15754" mtime="1594735924" />
+  <entry name="libselinux-bindings.spec" md5="9241ebfee727c8b91a1a24374f3d1331" size="4023" mtime="1594715186" />
+  <entry name="libselinux.changes" md5="59f85a2381aa5590de495454c5e5a699" size="23708" mtime="1594735924" />
+  <entry name="libselinux.spec" md5="2e38259accb5fd73d8d944e6368a0ba0" size="5272" mtime="1594715186" />
+  <entry name="python3.8-compat.patch" md5="d94f6dffc1cf504b6668c9df280fcde6" size="890" mtime="1594726017" />
+  <entry name="readv-proto.patch" md5="757840a8821aee2f84cb0effef16bde6" size="347" mtime="1499250738" />
+  <entry name="selinux-ready" md5="6334c63e0e079618993bdea50b8bff9a" size="6412" mtime="1559556013" />
+  <entry name="skip_cycles.patch" md5="64dfb57b1ab454fe3aef390c6517111c" size="511" mtime="1585237453" />
+  <entry name="swig4_moduleimport.patch" md5="21ecdaf8462c74384d85955b1c2f71ea" size="431" mtime="1576508874" />
+</directory>

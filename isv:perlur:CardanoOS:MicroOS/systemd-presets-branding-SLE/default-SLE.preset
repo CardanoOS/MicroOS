@@ -1,0 +1,16 @@
+enable ModemManager.service
+enable btrfsmaintenance-refresh.service
+enable cio_ignore.service
+enable iprdump.service
+enable iprinit.service
+enable iprupdate.service
+enable libvirtd.service
+enable opal_errd.service
+enable oracle.service
+enable rollback.service
+enable rtas_errd.service
+enable sapconf.service
+enable virtlogd.socket
+enable wpa_supplicant.service
+enable cpi.service
+enable unbound-anchor.timer

@@ -1,0 +1,21 @@
+<directory name="000product" rev="127" vrev="127" srcmd5="b01120e9f211fa8510646692c429d2a8">
+  <entry name="MicroOS-dvd5-dvd-aarch64.kiwi" md5="f9aadc64b3e3ec58474d7c1f11776673" size="24307" mtime="1611837329" />
+  <entry name="MicroOS-dvd5-dvd-aarch64.kwd" md5="fe48abbbc8573cca27ed26ae4aa6203a" size="24951" mtime="1611837329" />
+  <entry name="MicroOS-dvd5-dvd-x86_64.kiwi" md5="d19de744d73b9cd25a671ca40a8e80b4" size="25304" mtime="1611837329" />
+  <entry name="MicroOS-dvd5-dvd-x86_64.kwd" md5="39621d071ec49dfffa1ff8251c5fc9be" size="25653" mtime="1611837329" />
+  <entry name="MicroOS-ftp-ftp-aarch64.kiwi" md5="b46921eea3d31c97eb8a81bc5a6ed89e" size="24419" mtime="1611837329" />
+  <entry name="MicroOS-ftp-ftp-aarch64.kwd" md5="5cda7967fe4b13773c97f3ee3474dada" size="24951" mtime="1611837329" />
+  <entry name="MicroOS-ftp-ftp-x86_64.kiwi" md5="21cfe17963fbd4d84e5dd8e09c9007b6" size="25415" mtime="1611837330" />
+  <entry name="MicroOS-ftp-ftp-x86_64.kwd" md5="a0520c908f6fb2f7219d9613f9181caa" size="25653" mtime="1611837330" />
+  <entry name="MicroOS.product" md5="37616ee21f47334445e5d6db84381c13" size="4780" mtime="1594917142" />
+  <entry name="NON_FTP_PACKAGES.group" md5="ca03cd18cd646d25e1453f6dabcc542c" size="16946" mtime="1569376248" />
+  <entry name="NON_FTP_PACKAGES_OSS.group" md5="75ecc9f14ecd2a290986b1186b37a511" size="450" mtime="1509731418" />
+  <entry name="_constraints" md5="e2c2c446054bf53e10cf431ae91fa83d" size="328" mtime="1596466461" />
+  <entry name="_multibuild" md5="74049ce645a2eeceb7515230db272f5e" size="207" mtime="1589292032" />
+  <entry name="defaults-archsets.include" md5="c9b9fb24340880cf3df005c152bb79b6" size="1619" mtime="1547622448" />
+  <entry name="defaults-conditionals.include" md5="fe22b0fed922ba8c2c08cd16a51dcd3f" size="1727" mtime="1548229491" />
+  <entry name="defaults-repositories.include" md5="00821dfba25a84b8c28207f10735df4b" size="133" mtime="1547721817" />
+  <entry name="opensuse_microos.group" md5="551bc17f443033d452141345c232245d" size="58370" mtime="1612178215" />
+  <entry name="stub.kiwi" md5="327a374342fbcd604b6e1ab624164e0d" size="67" mtime="1507713210" />
+  <entry name="unsorted.yml" md5="33e15905ee2f7611e6e81e7d256cbde1" size="917914" mtime="1617564099" />
+</directory>

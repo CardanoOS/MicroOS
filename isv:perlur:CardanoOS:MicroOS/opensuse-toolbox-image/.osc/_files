@@ -1,0 +1,9 @@
+<directory name="opensuse-toolbox-image" rev="1" vrev="1" srcmd5="2a4ff7bf4f70ee77ba42709a7873b68c">
+  <serviceinfo code="succeeded" xsrcmd5="fe9da77e154e74e119b380e4b2e1dfb0" />
+  <entry name="LICENSE" md5="dd56cf2476a0641019bd082e9aff122f" size="1023" mtime="1570035242" />
+  <entry name="_constraints" md5="8f701e61f32a48cbd8ea7d15da74d413" size="211" mtime="1572429415" />
+  <entry name="_service" md5="fcb3c685bc779e6c009ffb6473875951" size="428" mtime="1570035773" />
+  <entry name="config.sh" md5="1c2925e0f44fb6eee9107945d4b516ab" size="960" mtime="1571054672" />
+  <entry name="opensuse-toolbox-image.changes" md5="7df23b3467233d88268f2e211e68059b" size="914" mtime="1589285523" />
+  <entry name="opensuse-toolbox-image.kiwi" md5="4ebb953bea12e1d9c2c6ecdc1fda2fe2" size="2398" mtime="1611750301" />
+</directory>

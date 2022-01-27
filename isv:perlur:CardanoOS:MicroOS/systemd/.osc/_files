@@ -1,0 +1,46 @@
+<directory name="systemd" rev="1" vrev="1" srcmd5="4af19832266bc35751390b99587e07bb">
+  <serviceinfo code="succeeded" xsrcmd5="ff21203e87934798c82496106523b14a" />
+  <entry name="0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch" md5="306e9afb28f5812f5314d985ddc87d14" size="2604" mtime="1599051730" />
+  <entry name="0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch" md5="1fc3afe00f655715fbbfbede17cef5fb" size="746" mtime="1601493283" />
+  <entry name="0003-strip-the-domain-part-from-etc-hostname-when-setting.patch" md5="b9bf6f49c6f2fe4df1c0b2259d43ac7e" size="1588" mtime="1599051731" />
+  <entry name="0004-tmpfiles-support-exclude-statements-based-on-file-ow.patch" md5="7f43d967a8a97ee0b0e0952cfc55b8c4" size="5034" mtime="1599051731" />
+  <entry name="0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch" md5="22fbbf54f11fc58621d59cbaa6bcbf3c" size="1154" mtime="1599051731" />
+  <entry name="0006-sysv-generator-add-back-support-for-SysV-scripts-for.patch" md5="217bcfec309d75c47aae57679f19d4ac" size="4780" mtime="1599051732" />
+  <entry name="0007-networkd-make-network.service-an-alias-of-systemd-ne.patch" md5="f8be3b400104f81d0622b135d0c7346f" size="843" mtime="1599051732" />
+  <entry name="0008-sysv-generator-translate-Required-Start-into-a-Wants.patch" md5="ee2b930569198a1d026a874bc36de4dc" size="3061" mtime="1599051733" />
+  <entry name="0009-pid1-handle-console-specificities-weirdness-for-s390.patch" md5="82fd34667019dba6377af5a4b586d36b" size="2056" mtime="1599051733" />
+  <entry name="0011-core-disable-session-keyring-per-system-sevice-entir.patch" md5="4584b140246382d64869122cc9743c62" size="1651" mtime="1599051734" />
+  <entry name="0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch" md5="8ea2d51cd2e88cbe78fd3f507751545a" size="2202" mtime="1599051734" />
+  <entry name="1000-logind-disable-RemoveIPC-by-default.patch" md5="82558ce79f5d0cfabc900d3952dfe2cd" size="1939" mtime="1605543755" />
+  <entry name="1001-journald-turn-ForwardToSyslog-on-by-default.patch" md5="70268f3b3d7bae116b8f2a760ac44aec" size="2413" mtime="1605543755" />
+  <entry name="1002-udev-add-option-to-generate-old-buggy-SCSI-serials.patch" md5="6609399123410d79f8d7f28976eba0a2" size="9654" mtime="1605543755" />
+  <entry name="1003-logind-store-a-timestamp-when-the-ACPI-power-button-.patch" md5="c70a81ddaec335d6ed048803521bf279" size="5241" mtime="1605543755" />
+  <entry name="1004-udev-don-t-create-by-partlabel-primary-and-.-logical.patch" md5="03b21f3ab414db785acd5006f12a302b" size="3397" mtime="1605543755" />
+  <entry name="1005-udev-optionally-disable-the-generation-of-the-partla.patch" md5="1780a00bac4fcb160fcb3058db6d34ff" size="1813" mtime="1605543755" />
+  <entry name="1006-logind-keep-backward-compatibility-with-UserTasksMax.patch" md5="9f7dec6933834fac0024ad57fd415a95" size="7280" mtime="1605543755" />
+  <entry name="1007-tmpfiles-follow-SUSE-policies.patch" md5="c3d823505495f639bd347e603dba53b3" size="2018" mtime="1605543755" />
+  <entry name="1008-Restore-support-for-halt.local.patch" md5="36caa69234e4a4ba69e4eae276c2a4ee" size="11731" mtime="1605543755" />
+  <entry name="60-io-scheduler.rules" md5="a93b7dc292440416bc3abd06f41e83f4" size="677" mtime="1605543755" />
+  <entry name="80-acpi-container-hotplug.rules" md5="c02f71ed703d7efc32fed5530267ce77" size="667" mtime="1605543755" />
+  <entry name="80-hotplug-cpu-mem.rules" md5="5a817e0e6d3360d5b30ac4c1df00fee2" size="916" mtime="1605543755" />
+  <entry name="99-wakeup-from-idle.rules" md5="f244fdd23ce2357102c23318d79cbbaa" size="355" mtime="1520494026" />
+  <entry name="_service" md5="1bf585f2f89b6806b7caf7bbf1e36896" size="616" mtime="1567580720" />
+  <entry name="after-local.service" md5="c355256730ddbae812095fb7b8f8dcb4" size="497" mtime="1435722974" />
+  <entry name="baselibs.conf" md5="10bec195cf4b5c6db6548d0a575b79af" size="330" mtime="1480437786" />
+  <entry name="kbd-model-map.legacy" md5="4f079b796f07ea922e50d5083d2c16ec" size="978" mtime="1568883335" />
+  <entry name="pre_checkin.sh" md5="77f747c946fde9ca70399d531b223e89" size="624" mtime="1463148634" />
+  <entry name="scripts-systemd-fix-machines-btrfs-subvol.sh" md5="90ccff63c5720093bee421f6f3cc047d" size="3714" mtime="1515760170" />
+  <entry name="scripts-systemd-migrate-sysconfig-i18n.sh" md5="1c2ae9d5be0ded6c1fc9f8029a0076d4" size="4240" mtime="1592981288" />
+  <entry name="scripts-systemd-upgrade-from-pre-210.sh" md5="60f1ddcbd86a1c72304577b37548aa9a" size="1174" mtime="1524213367" />
+  <entry name="systemd-mini-rpmlintrc" md5="7247d68f4a776852dcd72e2441931ee8" size="1851" mtime="1588079045" />
+  <entry name="systemd-mini.changes" md5="a69f7fd8f753cea07314201a75dc3e03" size="465288" mtime="1605543755" />
+  <entry name="systemd-mini.spec" md5="f7632d62db939841ce8b0efc6992fe9d" size="54327" mtime="1605543755" />
+  <entry name="systemd-rpmlintrc" md5="7247d68f4a776852dcd72e2441931ee8" size="1851" mtime="1588079047" />
+  <entry name="systemd-sysv-convert" md5="6951d570a70e8851dce69711720fb135" size="3646" mtime="1499239088" />
+  <entry name="systemd-sysv-install" md5="38df5309a9db64b61f5e103d0532c0d3" size="987" mtime="1473239716" />
+  <entry name="systemd-user" md5="db7c2cfa99624841883bb4244b7a3868" size="220" mtime="1490291689" />
+  <entry name="systemd-v246.6+suse.42.g2ac606cb50.tar.xz" md5="4a3b5feec31a2054e6d8df0d9a65d8b7" size="6556820" mtime="1605543755" />
+  <entry name="systemd.changes" md5="a69f7fd8f753cea07314201a75dc3e03" size="465288" mtime="1605543755" />
+  <entry name="systemd.spec" md5="5ae0ff55628ca620fdabc3081110a018" size="54130" mtime="1605543756" />
+  <entry name="tmpfiles-suse.conf" md5="eab4d528e3956eff53f64ef9a3f8ff75" size="398" mtime="1587998929" />
+</directory>

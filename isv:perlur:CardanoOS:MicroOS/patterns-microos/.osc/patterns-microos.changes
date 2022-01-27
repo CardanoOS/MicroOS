@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Wed Jan 27 08:02:21 UTC 2021 - jsrain@suse.com
+
+- don't require grub2-branding on s390x
+
+-------------------------------------------------------------------
+Mon Jan 18 22:49:00 UTC 2021 - jsrain@suse.com
+
+- include the cockpit package in the pattern
+
+-------------------------------------------------------------------
+Thu Jan 14 12:21:48 UTC 2021 - jsrain@suse.com
+
+- added system-group-kvm
+
+-------------------------------------------------------------------
+Wed Jan 13 10:19:39 UTC 2021 - jsrain@suse.com
+
+- adjust pattern descriptions to product rename
+
+-------------------------------------------------------------------
+Mon Dec  7 12:48:58 UTC 2020 - jsrain@suse.com
+
+- include cockpit-ws in the cockpit pattern
+- typo in pattern provides
+
+-------------------------------------------------------------------
+Fri Nov 27 08:08:38 UTC 2020 - jsrain@suse.com
+
+- created pattern cockpit
+
+-------------------------------------------------------------------
+Wed Nov 25 14:36:18 UTC 2020 - jsrain@suse.com
+
+- added vim-small to the default pattern
+
+-------------------------------------------------------------------
+Thu Oct 29 14:40:37 UTC 2020 - jsrain@suse.com
+
+- removing plymouth
+
+-------------------------------------------------------------------
+Wed Oct 21 06:29:28 UTC 2020 - jsrain@suse.com
+
+- updated selinux pattern for new version
+
+-------------------------------------------------------------------
+Fri Oct 16 07:30:36 UTC 2020 - jsrain@suse.com
+
+- adjusted pattern ordering
+
+-------------------------------------------------------------------
+Wed Oct 14 11:00:31 UTC 2020 - jsrain@suse.com
+
+- renamed to patterns-microos
+
+-------------------------------------------------------------------
+Fri Oct  9 08:12:09 UTC 2020 - jsrain@suse.com
+
+- include plymouth in the pattern
+
+-------------------------------------------------------------------
+Wed Sep 30 14:45:16 UTC 2020 - jsrain@suse.com
+
+- do not obsolete the suse-build-key (bsc#1177108)
+
+-------------------------------------------------------------------
+Thu Sep  3 14:21:13 UTC 2020 - jsrain@suse.com
+
+- replace kubic-locale-archive with glibc-locale-base (bsc#1176079)
+
+-------------------------------------------------------------------
+Tue Sep  1 07:17:52 UTC 2020 - jsrain@suse.com
+
+- make dependency of grub2-branding-SLE hard
+- bump version to 5.0.0
+
+-------------------------------------------------------------------
+Fri Aug 28 08:19:31 UTC 2020 - jsrain@suse.com
+
+- recommend grub2-branding-SLE by base pattern
+
+-------------------------------------------------------------------
+Thu Aug 13 14:41:24 UTC 2020 - jsrain@suse.com
+
+- clean-up of patterns, more consistent pattern naming
+
+-------------------------------------------------------------------
+Tue Aug 11 11:45:55 UTC 2020 - jsrain@suse.com
+
+- fixed wrong package names, removed unneeded patterns
+
+-------------------------------------------------------------------
+Mon Aug 10 12:12:31 UTC 2020 - jsrain@suse.com
+
+- initial version

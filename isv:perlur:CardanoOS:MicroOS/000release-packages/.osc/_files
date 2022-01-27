@@ -1,0 +1,6 @@
+<directory name="000release-packages" rev="16" vrev="16" srcmd5="17f4c68c9fe1c242d56623c1ede34db5">
+  <entry name="MicroOS-release.spec" md5="64b1651f194e5735eb56163faff7060e" size="10422" mtime="1603386913" />
+  <entry name="_multibuild" md5="d1541f1839b7a8eee0abc2d264901918" size="64" mtime="1586954747" />
+  <entry name="stub.spec" md5="d3dd3d0c11300e1dace7415493bb966c" size="67" mtime="1507713030" />
+  <entry name="weakremovers.inc" md5="7123a714a8e5ade618cc09650ec14441" size="904073" mtime="1587119269" />
+</directory>

@@ -1,0 +1,9 @@
+<directory name="skelcd-openSUSE" rev="1" vrev="1" srcmd5="c2f762637e6478379485616d54e7141b">
+  <serviceinfo code="succeeded" xsrcmd5="f0b8fe5c2e6c179be390d886bf5c71d4" />
+  <entry name="_service" md5="2736d98a647fcd6e46003830dad36201" size="592" mtime="1553509043" />
+  <entry name="_servicedata" md5="c0273349937b334f1a6e64264cba4d32" size="235" mtime="1573741439" />
+  <entry name="skelcd-openSUSE-84.87.20190715.93dc01e.tar.xz" md5="2b295d64542872046be7f0cb72b6d46b" size="113840" mtime="1573741439" />
+  <entry name="skelcd-openSUSE-rpmlintrc" md5="63ea18a06c1a9a3c12c2c734e5eef042" size="276" mtime="1218154649" />
+  <entry name="skelcd-openSUSE.changes" md5="1ddb656e61ad6f2575364362401415ca" size="26442" mtime="1573741439" />
+  <entry name="skelcd-openSUSE.spec" md5="6db3888ce70cb8dfc56ae8926480a749" size="3236" mtime="1573741439" />
+</directory>

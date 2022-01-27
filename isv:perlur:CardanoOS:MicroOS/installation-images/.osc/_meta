@@ -1,0 +1,7 @@
+<package name="installation-images" project="openSUSE:Leap:15.2:MicroOS">
+  <title>Installation Image Files</title>
+  <description>Installation image files (boot and module disks, root image, and
+suse/inst-sys directory).
+</description>
+</package>
+

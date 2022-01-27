@@ -1,0 +1,6 @@
+<multibuild>
+  <package>MicroOS-dvd5-dvd-aarch64</package>
+  <package>MicroOS-dvd5-dvd-x86_64</package>
+  <package>MicroOS-ftp-ftp-aarch64</package>
+  <package>MicroOS-ftp-ftp-x86_64</package>
+</multibuild>

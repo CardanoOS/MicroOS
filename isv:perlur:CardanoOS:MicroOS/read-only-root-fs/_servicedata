@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/openSUSE/read-only-root-fs.git</param>
+    <param name="changesrevision">1258c2a7af9c0f7435b859860d19a8536b6964a4</param>
+ </service>
+</servicedata>

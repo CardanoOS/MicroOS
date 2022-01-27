@@ -1,0 +1,6 @@
+<directory name="libsepol" rev="1" vrev="1" srcmd5="a816d3dcc0526cb1289f5a71c6abd44a">
+  <entry name="baselibs.conf" md5="28d6031435722f18fabcfb04275df69f" size="10" mtime="1219426205" />
+  <entry name="libsepol-3.1.tar.gz" md5="b56dc01b76b97dcb730ab4e2fd1c9dea" size="473842" mtime="1594716149" />
+  <entry name="libsepol.changes" md5="1305cb99a3a814dfb700459ea19c4004" size="13463" mtime="1594718659" />
+  <entry name="libsepol.spec" md5="6c824ac42d6a3ae706113c172be2b9b9" size="3958" mtime="1594718660" />
+</directory>

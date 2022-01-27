@@ -1,0 +1,4 @@
+<multibuild>
+  <package>SMO</package>
+  <package>MicroOS</package>
+</multibuild>

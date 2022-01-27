@@ -1,0 +1,68 @@
+From 8b796c0a4a55cf684535fc4f19117d0551ef073b Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Fri, 19 Apr 2013 16:56:26 +0200
+Subject: [PATCH] tmpfiles: follow SUSE policies
+
+This patch includes the 2 following commits:
+
+  4761184ee7 Fix /run/lock group to follow openSUSE policy
+  c9dcdaeef0 SUSE policy: do not clean /tmp by default.
+
+It also drops the entries importing files from /usr/share/factory
+(bsc#1170146).
+
+This effectively fixes:
+
+[fbui: fixes bnc#733523]
+[rmax: fixes fate#314974]
+[fbui: fixes bsc#1170146]
+---
+ tmpfiles.d/etc.conf.m4 | 5 -----
+ tmpfiles.d/legacy.conf | 3 ++-
+ tmpfiles.d/tmp.conf    | 6 ++++--
+ 3 files changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/tmpfiles.d/etc.conf.m4 b/tmpfiles.d/etc.conf.m4
+index 66a777bdb2..579acf1d1a 100644
+--- a/tmpfiles.d/etc.conf.m4
++++ b/tmpfiles.d/etc.conf.m4
+@@ -12,8 +12,3 @@ L+ /etc/mtab - - - - ../proc/self/mounts
+ m4_ifdef(`HAVE_SMACK_RUN_LABEL',
+ t /etc/mtab - - - - security.SMACK64=_
+ )m4_dnl
+-C! /etc/nsswitch.conf - - - -
+-m4_ifdef(`HAVE_PAM',
+-C! /etc/pam.d - - - -
+-)m4_dnl
+-C! /etc/issue - - - -
+diff --git a/tmpfiles.d/legacy.conf b/tmpfiles.d/legacy.conf
+index 62e2ae0986..415918f407 100644
+--- a/tmpfiles.d/legacy.conf
++++ b/tmpfiles.d/legacy.conf
+@@ -10,7 +10,8 @@
+ # These files are considered legacy and are unnecessary on legacy-free
+ # systems.
+ 
+-d /run/lock 0755 root root -
++# On openSUSE, /run/lock is owned by the 'lock' group.
++d /run/lock 0775 root lock -
+ L /var/lock - - - - ../run/lock
+ 
+ # /run/lock/subsys is used for serializing SysV service execution, and
+diff --git a/tmpfiles.d/tmp.conf b/tmpfiles.d/tmp.conf
+index fe5225d751..d8c5301c7a 100644
+--- a/tmpfiles.d/tmp.conf
++++ b/tmpfiles.d/tmp.conf
+@@ -8,5 +8,7 @@
+ # See tmpfiles.d(5) for details
+ 
+ # Clear tmp directories separately, to make them easier to override
+-q /tmp 1777 root root 10d
+-q /var/tmp 1777 root root 30d
++
++# SUSE policy: we don't clean those directories
++q /tmp 1777 root root -
++q /var/tmp 1777 root root -
+-- 
+2.26.2
+

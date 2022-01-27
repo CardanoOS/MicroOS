@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="version">2.6.0</param>
+    <param name="revision">v2.6.0</param>
+    <param name="url">git://github.com/coreos/ignition.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">kukuk@suse.de</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

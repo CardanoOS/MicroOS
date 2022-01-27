@@ -1,0 +1,8 @@
+<package name="000package-groups" project="openSUSE:Leap:15.2:MicroOS">
+  <title/>
+  <description/>
+  <build>
+    <disable/>
+  </build>
+</package>
+

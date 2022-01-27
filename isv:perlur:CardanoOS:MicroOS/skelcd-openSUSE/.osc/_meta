@@ -1,0 +1,7 @@
+<package name="skelcd-openSUSE" project="openSUSE:Leap:15.2:MicroOS">
+  <title>Skeleton for openSUSE OSS Media Sets</title>
+  <description>Internal package only, used for openSUSE OSS Media sets
+  just here for rebuild to catch with_betatest
+  </description>
+</package>
+

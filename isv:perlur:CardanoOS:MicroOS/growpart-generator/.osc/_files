@@ -1,0 +1,6 @@
+<directory name="growpart-generator" rev="1" vrev="1" srcmd5="ce475155394742a061dffff94244e9b4">
+  <entry name="gpl-3.0.txt" md5="1ebbd3e34237af26da5dc08a4e440464" size="35149" mtime="1573204393" />
+  <entry name="growpart-generator.changes" md5="b083108fd418989b550c9b61d37fa459" size="343" mtime="1573464431" />
+  <entry name="growpart-generator.sh" md5="bb02c9d73cb4f2c9cc12e1c881a097c3" size="1265" mtime="1573208182" />
+  <entry name="growpart-generator.spec" md5="2366706d3f060a5f66dfb594e952a904" size="1708" mtime="1573464455" />
+</directory>

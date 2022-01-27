@@ -1,0 +1,42 @@
+From 2f90c6d74e885fc289f808ecfc08127ede298e18 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Tue, 21 Aug 2018 16:21:53 +0200
+Subject: [PATCH 2/2] udev: optionally disable the generation of the
+ 'partlabel' symlinks
+
+We already addressed bsc#1089761 to prevent the generation of
+"primary" or "logical".
+
+But it wasn't enough: some users could also have used their own
+name other than "primary" and "logical" of course...
+
+For them, we introduce "udev.no-partlabel-links" kernel command-line
+option to prevent the generation of all by-partlabel symlinks
+regardless of the name which was choosen.
+
+This option should be *only* used to address performance issue related
+to bsc#1089761 because it will be removed as soon as the udev
+performance issue will be addressed.
+
+[fbui: fixes bsc#1089761]
+---
+ rules.d/60-persistent-storage.rules | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/rules.d/60-persistent-storage.rules b/rules.d/60-persistent-storage.rules
+index 95c4d5368e..444fec3001 100644
+--- a/rules.d/60-persistent-storage.rules
++++ b/rules.d/60-persistent-storage.rules
+@@ -122,6 +122,8 @@ ENV{DEVTYPE}=="partition", ENV{ID_WWN_WITH_EXTENSION}=="?*", SYMLINK+="disk/by-i
+ 
+ # by-partlabel/by-partuuid links (partition metadata)
+ ENV{ID_PART_ENTRY_UUID}=="?*", SYMLINK+="disk/by-partuuid/$env{ID_PART_ENTRY_UUID}"
+-ENV{ID_PART_ENTRY_SCHEME}=="gpt", ENV{ID_PART_ENTRY_NAME}=="?*", ENV{ID_PART_ENTRY_NAME}!="primary|logical", SYMLINK+="disk/by-partlabel/$env{ID_PART_ENTRY_NAME}"
++
++IMPORT{cmdline}="udev.no-partlabel-links"
++ENV{ID_PART_ENTRY_SCHEME}=="gpt", ENV{ID_PART_ENTRY_NAME}=="?*", ENV{ID_PART_ENTRY_NAME}!="primary|logical", ENV{udev.no-partlabel-links}!="?*", SYMLINK+="disk/by-partlabel/$env{ID_PART_ENTRY_NAME}"
+ 
+ LABEL="persistent_storage_end"
+-- 
+2.26.2
+

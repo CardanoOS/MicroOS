@@ -1,0 +1,183 @@
+From c95ebcbbec1ef797abb25f9e7a719aa9fc0f889c Mon Sep 17 00:00:00 2001
+From: Jeff Mahoney <jeffm@suse.com>
+Date: Sun, 27 Jul 2014 14:20:36 +0200
+Subject: [PATCH 1002/1003] udev: add option to generate old 'buggy' SCSI
+ serials
+
+Prior to udev 184, scsi_id would truncate the last character of the model
+string when generating the ID_SERIAL value. If a system was installed
+prior to that fix being available in udev, there may be configuration
+information that refers to the truncated link.
+
+This patch adds a --truncated-serial option and a udev rule will created
+the old truncated links.
+
+Signed-off-by: Jeff Mahoney <jeffm@suse.com>
+
+[fbui: forward ported from commit b5dafd57359b6e92b35dd419df2b2dd503057ebc]
+[fbui: fix error detected by the rule syntax checker in 61-persistent-storage-compat.rules]
+[fbui: adjust context]
+[fbui: fixes bnc#886852]
+---
+ rules.d/61-persistent-storage-compat.rules |  4 ++++
+ src/udev/scsi_id/scsi_id.c                 | 15 ++++++++++++++-
+ src/udev/scsi_id/scsi_id.h                 |  1 +
+ src/udev/scsi_id/scsi_serial.c             | 17 +++++++++++------
+ 4 files changed, 30 insertions(+), 7 deletions(-)
+
+diff --git a/rules.d/61-persistent-storage-compat.rules b/rules.d/61-persistent-storage-compat.rules
+index bd229f619b..a49e5e54eb 100644
+--- a/rules.d/61-persistent-storage-compat.rules
++++ b/rules.d/61-persistent-storage-compat.rules
+@@ -126,6 +126,10 @@ ENV{DEVTYPE}=="disk", ENV{ID_BUS}=="ata|nvme|scsi", DEVPATH!="*/virtual/*", IMPO
+ ENV{DEVTYPE}=="disk", ENV{ID_PATH_COMPAT2}=="?*", SYMLINK+="disk/by-path/$env{ID_PATH_COMPAT2}"
+ ENV{DEVTYPE}=="partition", ENV{ID_PATH_COMPAT2}=="?*", SYMLINK+="disk/by-path/$env{ID_PATH_COMPAT2}-part%n"
+ 
++# scsi compat links for ATA devices (for compatibility with udev < 184) (bnc#886852)
++KERNEL=="sd*[!0-9]", ENV{ID_BUS}=="ata", PROGRAM=="scsi_id --truncated-serial --whitelisted --replace-whitespace -p0x80 -d$tempnode", RESULT=="?*", ENV{ID_SCSI_COMPAT_TRUNCATED}="$result", SYMLINK+="disk/by-id/scsi-$env{ID_SCSI_COMPAT_TRUNCATED}"
++KERNEL=="sd*[0-9]", ENV{ID_SCSI_COMPAT_TRUNCATED}=="?*", SYMLINK+="disk/by-id/scsi-$env{ID_SCSI_COMPAT_TRUNCATED}-part%n"
++
+ #
+ # Generation #2
+ #
+diff --git a/src/udev/scsi_id/scsi_id.c b/src/udev/scsi_id/scsi_id.c
+index bb08da28b5..d0e84fdaa5 100644
+--- a/src/udev/scsi_id/scsi_id.c
++++ b/src/udev/scsi_id/scsi_id.c
+@@ -34,6 +34,7 @@ static const struct option options[] = {
+         { "replace-whitespace", no_argument,       NULL, 'u' },
+         { "sg-version",         required_argument, NULL, 's' },
+         { "verbose",            no_argument,       NULL, 'v' },
++        { "truncated-serial",   no_argument,       NULL, '9' },
+         { "version",            no_argument,       NULL, 'V' }, /* don't advertise -V */
+         { "export",             no_argument,       NULL, 'x' },
+         { "help",               no_argument,       NULL, 'h' },
+@@ -45,6 +46,7 @@ static bool dev_specified = false;
+ static char config_file[MAX_PATH_LEN] = "/etc/scsi_id.config";
+ static enum page_code default_page_code = PAGE_UNSPECIFIED;
+ static int sg_version = 4;
++static bool compat_truncated = false;
+ static bool reformat_serial = false;
+ static bool export = false;
+ static char vendor_str[64];
+@@ -299,6 +301,7 @@ static void help(void) {
+                "  -g --whitelisted                 Treat device as whitelisted\n"
+                "  -u --replace-whitespace          Replace all whitespace by underscores\n"
+                "  -v --verbose                     Verbose logging\n"
++               "     --truncated-serial            truncated serial for compatibility with systems configured with by-id links created by udev < 184\n"
+                "  -x --export                      Print values as environment keys\n"
+                , program_invocation_short_name);
+ 
+@@ -368,6 +371,10 @@ static int set_options(int argc, char **argv,
+                         log_open();
+                         break;
+ 
++                case '9':
++                        compat_truncated = true;
++                        break;
++
+                 case 'V':
+                         printf("%s\n", GIT_VERSION);
+                         exit(EXIT_SUCCESS);
+@@ -505,6 +512,9 @@ static int scsi_id(char *maj_min_dev) {
+                         util_replace_whitespace(dev_scsi.serial, serial_str, sizeof(serial_str)-1);
+                         util_replace_chars(serial_str, NULL);
+                         printf("ID_SERIAL=%s\n", serial_str);
++                        util_replace_whitespace(dev_scsi.serial_compat, serial_str, sizeof(serial_str)-1);
++                        util_replace_chars(serial_str, NULL);
++                        printf("ID_SERIAL_COMPAT=%s\n", serial_str);
+                         util_replace_whitespace(dev_scsi.serial_short, serial_str, sizeof(serial_str)-1);
+                         util_replace_chars(serial_str, NULL);
+                         printf("ID_SERIAL_SHORT=%s\n", serial_str);
+@@ -532,7 +542,10 @@ static int scsi_id(char *maj_min_dev) {
+         if (reformat_serial) {
+                 char serial_str[MAX_SERIAL_LEN];
+ 
+-                util_replace_whitespace(dev_scsi.serial, serial_str, sizeof(serial_str)-1);
++                if (compat_truncated)
++                        util_replace_whitespace(dev_scsi.serial_compat, serial_str, sizeof(serial_str)-1);
++                else
++                        util_replace_whitespace(dev_scsi.serial, serial_str, sizeof(serial_str)-1);
+                 util_replace_chars(serial_str, NULL);
+                 printf("%s\n", serial_str);
+                 goto out;
+diff --git a/src/udev/scsi_id/scsi_id.h b/src/udev/scsi_id/scsi_id.h
+index 70e804fb75..478b2497d5 100644
+--- a/src/udev/scsi_id/scsi_id.h
++++ b/src/udev/scsi_id/scsi_id.h
+@@ -33,6 +33,7 @@ struct scsi_id_device {
+         char kernel[64];
+         char serial[MAX_SERIAL_LEN];
+         char serial_short[MAX_SERIAL_LEN];
++        char serial_compat[MAX_SERIAL_LEN];
+         int use_sg;
+ 
+         /* Always from page 0x80 e.g. 'B3G1P8500RWT' - may not be unique */
+diff --git a/src/udev/scsi_id/scsi_serial.c b/src/udev/scsi_id/scsi_serial.c
+index 7f25824df3..82e289b1c5 100644
+--- a/src/udev/scsi_id/scsi_serial.c
++++ b/src/udev/scsi_id/scsi_serial.c
+@@ -83,7 +83,7 @@ static const char hex_str[]="0123456789abcdef";
+ #define SG_ERR_CAT_OTHER               99        /* Some other error/warning */
+ 
+ static int do_scsi_page80_inquiry(struct scsi_id_device *dev_scsi, int fd,
+-                                  char *serial, char *serial_short, int max_len);
++                                  char *serial, char *serial_short, char *serial_compat, int max_len);
+ 
+ static int sg_err_category_new(int scsi_status, int msg_status, int
+                                host_status, int driver_status, const
+@@ -557,7 +557,7 @@ static int do_scsi_page83_inquiry(struct scsi_id_device *dev_scsi, int fd,
+         unsigned char page_83[SCSI_INQ_BUFF_LEN];
+ 
+         /* also pick up the page 80 serial number */
+-        do_scsi_page80_inquiry(dev_scsi, fd, NULL, unit_serial_number, MAX_SERIAL_LEN);
++        do_scsi_page80_inquiry(dev_scsi, fd, NULL, unit_serial_number, NULL, MAX_SERIAL_LEN);
+ 
+         memzero(page_83, SCSI_INQ_BUFF_LEN);
+         retval = scsi_inquiry(dev_scsi, fd, 1, PAGE_83, page_83,
+@@ -697,7 +697,7 @@ static int do_scsi_page83_prespc3_inquiry(struct scsi_id_device *dev_scsi, int f
+ 
+ /* Get unit serial number VPD page */
+ static int do_scsi_page80_inquiry(struct scsi_id_device *dev_scsi, int fd,
+-                                  char *serial, char *serial_short, int max_len) {
++                                  char *serial, char *serial_short, char *serial_compat, int max_len) {
+         int retval;
+         int ser_ind;
+         int i;
+@@ -730,9 +730,14 @@ static int do_scsi_page80_inquiry(struct scsi_id_device *dev_scsi, int fd,
+                 ser_ind = append_vendor_model(dev_scsi, serial + 1);
+                 if (ser_ind < 0)
+                         return 1;
++                if (serial_compat)
++                        strcpy(serial_compat, serial);
+                 ser_ind++; /* for the leading 'S' */
+-                for (i = 4; i < len + 4; i++, ser_ind++)
++                for (i = 4; i < len + 4; i++, ser_ind++) {
+                         serial[ser_ind] = buf[i];
++                        if (serial_compat)
++                                serial_compat[ser_ind - 1] = buf[i];
++                }
+         }
+         if (serial_short) {
+                 memcpy(serial_short, buf + 4, len);
+@@ -804,7 +809,7 @@ int scsi_get_serial(struct scsi_id_device *dev_scsi, const char *devname,
+                 return 1;
+ 
+         if (page_code == PAGE_80) {
+-                if (do_scsi_page80_inquiry(dev_scsi, fd, dev_scsi->serial, dev_scsi->serial_short, len)) {
++                if (do_scsi_page80_inquiry(dev_scsi, fd, dev_scsi->serial, dev_scsi->serial_short, dev_scsi->serial_compat, len)) {
+                         retval = 1;
+                         goto completed;
+                 } else  {
+@@ -878,7 +883,7 @@ int scsi_get_serial(struct scsi_id_device *dev_scsi, const char *devname,
+         for (ind = 4; ind <= page0[3] + 3; ind++)
+                 if (page0[ind] == PAGE_80)
+                         if (!do_scsi_page80_inquiry(dev_scsi, fd,
+-                                                    dev_scsi->serial, dev_scsi->serial_short, len)) {
++                                                    dev_scsi->serial, dev_scsi->serial_short, dev_scsi->serial_compat, len)) {
+                                 /*
+                                  * Success
+                                  */
+-- 
+2.26.2
+

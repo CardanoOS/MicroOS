@@ -1,0 +1,9 @@
+<multibuild>
+        <!-- for release -->
+        <flavor>Default</flavor>
+        <flavor>Default-RT</flavor>
+        <!-- for testing purposes only -->
+<!--        <flavor>image-legacy</flavor> -->
+        <flavor>Default-vdi-legacy</flavor>
+        <flavor>Default-qcow</flavor>
+</multibuild>

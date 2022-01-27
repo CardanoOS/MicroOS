@@ -1,0 +1,8 @@
+<directory name="polkit-default-privs" rev="3" vrev="1" srcmd5="ab1dae29bfd166f245fa29cea7ddb6de">
+  <serviceinfo code="succeeded" xsrcmd5="bf457f836de013399e83f539f96e6bb1" />
+  <entry name="_service" md5="05a2586935d7ff53543294e998f3531e" size="536" mtime="1606221173" />
+  <entry name="_servicedata" md5="25abbf65faa609ba80563dbf4b08079e" size="250" mtime="1607670192" />
+  <entry name="polkit-default-privs-13.2+20201209.437b102.tar.xz" md5="253c989bf1f3e1431144a96ebdd258f9" size="24212" mtime="1607670192" />
+  <entry name="polkit-default-privs.changes" md5="973dcc1819112448d242a6952a1be910" size="45161" mtime="1607670192" />
+  <entry name="polkit-default-privs.spec" md5="07d7c7f5fdcc0e946bfc2c7c211264cd" size="3222" mtime="1607670192" />
+</directory>

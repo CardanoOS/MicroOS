@@ -1,0 +1,10 @@
+# False positive
+addFilter('explicit-lib-dependency.*libvirt-client');
+
+# RPM Group is obsolete
+addFilter('non-standard-group Unspecified');
+
+addFilter('suse-missing-rclink cockpit-motd');
+
+# FIXME
+setBadness('permissions-unauthorized-file', 700);

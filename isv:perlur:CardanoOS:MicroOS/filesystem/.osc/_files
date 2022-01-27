@@ -1,0 +1,11 @@
+<directory name="filesystem" rev="2" vrev="2" srcmd5="c362707ef1f9d0f5f6b0fe6fd4acdcb7">
+  <entry name="LICENSE.txt" md5="dd56cf2476a0641019bd082e9aff122f" size="1023" mtime="1372928881" />
+  <entry name="directory.list" md5="b6df8ffa4ae107a1f945835f86f67106" size="4657" mtime="1605543757" />
+  <entry name="directory.list64" md5="fff7d94dae5f6298097a1061b29d9175" size="116" mtime="1602779173" />
+  <entry name="filesystem.changes" md5="ed4743627c14b0e2a690c265c0c63d11" size="60676" mtime="1605543757" />
+  <entry name="filesystem.links" md5="915b9063d0b4126ca9346ac1ba27ba06" size="111" mtime="1511279717" />
+  <entry name="filesystem.spec" md5="5f06be51c211ba693d292e07bd5d6ec1" size="6765" mtime="1602779173" />
+  <entry name="ghost.list" md5="f6a039bba53f2ca48dfd1cd077a59b96" size="60" mtime="1342083055" />
+  <entry name="languages" md5="b65d8e98610e8d19692e9781c5ddc5bf" size="616" mtime="1319547473" />
+  <entry name="languages.man" md5="a77e773d87021991b1e24afa2cc5f1c3" size="72" mtime="1346766881" />
+</directory>

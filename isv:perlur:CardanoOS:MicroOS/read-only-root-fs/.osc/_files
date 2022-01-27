@@ -1,0 +1,9 @@
+<directory name="read-only-root-fs" rev="4" vrev="1" srcmd5="9cd5a628b0ccdbb312b0406040040f3a">
+  <serviceinfo code="succeeded" xsrcmd5="0ad1da1ccd69bc89aaa4a7c7a93d0eb6" />
+  <entry name="README.packaging.txt" md5="74ab9b217f4d0b436d17c68b3a93d825" size="421" mtime="1519744339" />
+  <entry name="_service" md5="110363aa1ee446a77d2392dff07a4182" size="517" mtime="1519744339" />
+  <entry name="_servicedata" md5="0676c1cb3c09aa0a7e3baaec82c19310" size="228" mtime="1596131450" />
+  <entry name="read-only-root-fs-1.0+git20200730.1243fd0.tar.xz" md5="9301d4da584e519e6a11f98b7c047e8d" size="8696" mtime="1596131450" />
+  <entry name="read-only-root-fs.changes" md5="dc4af018f865d2e11d47c949ff4fcd45" size="4322" mtime="1596131492" />
+  <entry name="read-only-root-fs.spec" md5="543558da75c57a0b147a49ae16ac0dcc" size="3532" mtime="1596131450" />
+</directory>

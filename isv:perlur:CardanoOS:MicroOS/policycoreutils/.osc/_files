@@ -1,0 +1,17 @@
+<directory name="policycoreutils" rev="1" vrev="1" srcmd5="c2b322c6ff43af44cfa26285e4cf2d59">
+  <entry name="get_os_version.patch" md5="c5b70161b941ef9fb55aefc5b2bb9f84" size="1369" mtime="1599728526" />
+  <entry name="make_targets.patch" md5="feaf36e4d7296aac075d10b1e8719756" size="630" mtime="1542879800" />
+  <entry name="newrole.pam" md5="93c3402f9eafbb4fdab5f4f74728339d" size="191" mtime="1582819454" />
+  <entry name="policycoreutils-3.1.tar.gz" md5="3097ac2c83e47af130452f10399282cb" size="2817914" mtime="1594715433" />
+  <entry name="policycoreutils.changes" md5="e1e2b7b003665dae2f05f2318a200c37" size="30735" mtime="1599728526" />
+  <entry name="policycoreutils.spec" md5="471e6066a41af7dd61b2c8407c885dbc" size="14358" mtime="1599728526" />
+  <entry name="run_init_use_pam_keyinit.patch" md5="87801858c491a61a963f8a1828662db0" size="489" mtime="1568805604" />
+  <entry name="selinux-polgengui.console" md5="f573930f514117af0a1cb0511eeeca16" size="77" mtime="1214295201" />
+  <entry name="selinux-polgengui.desktop" md5="eb80c610527aebcf1761156c3f0bd723" size="3700" mtime="1300124463" />
+  <entry name="selinux-python-3.1.tar.gz" md5="ec75687b680e0dd63e3ded05bd41cb5a" size="2100549" mtime="1594715434" />
+  <entry name="semodule-utils-3.1.tar.gz" md5="d9520d0cdef3d1be412155dc72ec2936" size="14257" mtime="1594715434" />
+  <entry name="system-config-selinux.console" md5="febb49c230a60be4380bca85c7be05dc" size="89" mtime="1211807438" />
+  <entry name="system-config-selinux.desktop" md5="df14958247a087e4367c7678c000275b" size="3492" mtime="1300124463" />
+  <entry name="system-config-selinux.pam" md5="afbbd38a0d2dadd26118e94d34830141" size="279" mtime="1228127056" />
+  <entry name="system-config-selinux.png" md5="697768ebd3e02e50a515004683f962a9" size="1447" mtime="1211807441" />
+</directory>

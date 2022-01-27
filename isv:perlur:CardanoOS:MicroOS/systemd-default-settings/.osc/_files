@@ -1,0 +1,7 @@
+<directory name="systemd-default-settings" rev="2" vrev="1" srcmd5="2fd0a5abbda62bb38744d7b4486c09ef">
+  <serviceinfo code="succeeded" xsrcmd5="f784555b2644192f7b7d829e2718b7a7" />
+  <entry name="_service" md5="6730c8c84579e8ab80adc73d36fff139" size="527" mtime="1601970349" />
+  <entry name="systemd-default-settings-0.5.tar.gz" md5="399febaceeef4998743be53075fa7da7" size="1784" mtime="1605767803" />
+  <entry name="systemd-default-settings.changes" md5="59deacdbfbaa9222f388ebf5b7d838e3" size="1818" mtime="1605767803" />
+  <entry name="systemd-default-settings.spec" md5="b87f9c0c2284ca288c441e0b51f96e0a" size="3363" mtime="1605767804" />
+</directory>

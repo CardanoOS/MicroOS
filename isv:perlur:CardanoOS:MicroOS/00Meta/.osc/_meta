@@ -1,0 +1,9 @@
+<package name="00Meta" project="openSUSE:Leap:15.2:MicroOS">
+  <title>meta package</title>
+  <description/>
+  <person userid="totest-manager" role="maintainer"/>
+  <build>
+    <disable/>
+  </build>
+</package>
+

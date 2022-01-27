@@ -1,0 +1,6 @@
+<package name="000release-packages" project="openSUSE:Leap:15.2:MicroOS">
+  <title/>
+  <description/>
+  <person userid="staging-bot" role="maintainer"/>
+</package>
+

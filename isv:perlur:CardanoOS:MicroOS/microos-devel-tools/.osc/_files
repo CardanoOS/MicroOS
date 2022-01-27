@@ -1,0 +1,10 @@
+<directory name="microos-devel-tools" rev="6" vrev="6" srcmd5="7ef7c8b61aad6be04c6acab64869dd9b">
+  <entry name="dracut.conf" md5="e22df3c5bcdb2c0ad54fcb556c77c8fd" size="24" mtime="1587398145" />
+  <entry name="macros.microos-runtime" md5="d543664aba531b6308b521dbb7620173" size="136" mtime="1587398145" />
+  <entry name="microos-devel-tools.changes" md5="b037b15ea747fc57cfa31044f87a727c" size="300" mtime="1589382640" />
+  <entry name="microos-devel-tools.spec" md5="f479ae998d068418b98c095ef5e09a17" size="2307" mtime="1589382640" />
+  <entry name="microos-ro" md5="d6c9a33f7bebe7a470ccb35ae7df4385" size="64" mtime="1587398474" />
+  <entry name="microos-rw" md5="afd9f358499fb30eba89b4883a480f05" size="65" mtime="1587398474" />
+  <entry name="rpm-sortbysize" md5="2581cd985e83a5ce5c0a2e4c0302cdb8" size="57" mtime="1587398145" />
+  <entry name="rpmorphan.c" md5="494c0b269eaed867f58c8b2e2135db1f" size="4076" mtime="1589382804" />
+</directory>

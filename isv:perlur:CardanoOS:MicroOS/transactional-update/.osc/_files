@@ -1,0 +1,6 @@
+<directory name="transactional-update" rev="2" vrev="1" srcmd5="de9bc551f6956e712559aa410bd35bf1">
+  <entry name="transactional-update-2.28.3.tar.gz" md5="9a6f01104fa7c72ad25f164b0102ad9d" size="173572" mtime="1604910716" />
+  <entry name="transactional-update.changes" md5="c2dcc87e4241d65a37b5b265d4906f7b" size="25280" mtime="1604910716" />
+  <entry name="transactional-update.check" md5="65074905bace18216d784d0a322df115" size="30" mtime="1542206438" />
+  <entry name="transactional-update.spec" md5="ec24c73c80d5e706541f6f852fcae0c2" size="4074" mtime="1604910716" />
+</directory>

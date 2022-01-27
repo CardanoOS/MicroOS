@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Tue May 12 12:10:09 UTC 2020 - Olaf Kirch <okir@okir.suse.com>
+
+- Add container-support-utils
+
+-------------------------------------------------------------------
+Fri Feb 14 15:06:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add sudo, wheel group and libcap-progs
+- Add labels for containers/toolbox
+
+-------------------------------------------------------------------
+Wed Oct 30 09:55:44 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints file for ppc64le with 4GB disk space
+  to avoid build error.
+
+-------------------------------------------------------------------
+Mon Oct 14 11:58:37 CEST 2019 - kukuk@suse.de
+
+- Add glibc-locale and man
+- Don't exclude docu from installation
+
+-------------------------------------------------------------------
+Wed Oct  2 16:01:24 CEST 2019 - kukuk@suse.de
+
+- Initial version
+

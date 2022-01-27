@@ -1,0 +1,10 @@
+<directory name="SUSE-MicroOS" rev="5" vrev="5" srcmd5="7af555fa861aa849486ac826d63c0152">
+  <entry name="LICENSE" md5="dd56cf2476a0641019bd082e9aff122f" size="1023" mtime="1602779166" />
+  <entry name="SUSE-MicroOS.changes" md5="0c829e05f1d0784ecd665d9379901b5f" size="3485" mtime="1611127533" />
+  <entry name="SUSE-MicroOS.kiwi" md5="737365de64de01b7e87568e3c6fc2609" size="14360" mtime="1611127533" />
+  <entry name="_constraints" md5="b8652cf7a9ac982fcd232e24f695c1c5" size="102" mtime="1602779167" />
+  <entry name="_multibuild" md5="ba392a8c45b238c7052159f451d964fe" size="296" mtime="1604997768" />
+  <entry name="config.sh" md5="8f8336f0cb8aebaa3efe23129a3b5aac" size="7689" mtime="1602779166" />
+  <entry name="editbootinstall_pine64.sh" md5="b7885992e65ee3831003f9abe3a6d556" size="1006" mtime="1602779166" />
+  <entry name="editbootinstall_rpi.sh" md5="2d4abfcca1886e874174efb160183511" size="1042" mtime="1602779166" />
+</directory>

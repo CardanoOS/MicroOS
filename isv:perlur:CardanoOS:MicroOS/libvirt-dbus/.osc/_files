@@ -1,0 +1,7 @@
+<directory name="libvirt-dbus" rev="1" vrev="1" srcmd5="37cc2f780a9cc838b6b97b6ed0ab97b9">
+  <entry name="libvirt-dbus-1.4.0.tar.xz" md5="2fb11a73d7da59bf0e81c44c877fbcde" size="53480" mtime="1592387418" />
+  <entry name="libvirt-dbus-systemd.diff" md5="f350998402d55748a5b4271ab03326d9" size="6444" mtime="1604943921" />
+  <entry name="libvirt-dbus.changes" md5="fbf02a5875abcba3eff5e052684b8c8c" size="835" mtime="1604943922" />
+  <entry name="libvirt-dbus.spec" md5="55b321f50239e99670f992ccfbdc4407" size="2739" mtime="1601907481" />
+  <entry name="system-user-libvirt-dbus.conf" md5="9097866da8eed599863925dd71044ebf" size="83" mtime="1604943922" />
+</directory>

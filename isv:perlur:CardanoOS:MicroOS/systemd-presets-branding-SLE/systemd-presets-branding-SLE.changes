@@ -1,0 +1,492 @@
+-------------------------------------------------------------------
+Fri May  8 12:44:22 UTC 2020 - matthias.gerstner@suse.com
+
+Cleanup of outdated autostart services (bsc#1171656):
+
+- Remove acpid.service. acpid is only available on SLE via openSUSE
+  backports.  In openSUSE acpid.service is *not* autostarted. I see no
+  reason why it should be on SLE.
+- Remove spamassassin.timer. This timer never seems to have existed.
+  Instead spamassassin ships a "sa-update.timer". But it is not
+  default-enabled and nobody ever complained about this.
+- Remove snapd.apparmor.service: This service was proactively added a year
+  ago, but snapd didn't even make it into openSUSE yet. There's no reason
+  to keep this entry unless snapd actually enters SLE which is not
+  foreseeable.
+
+-------------------------------------------------------------------
+Thu Mar 14 15:25:27 UTC 2019 - jsegitz@suse.com
+
+- Removed ixpdimm-monitor.service and readonly-root.service
+  (bsc#1129270)
+- Added snapd.apparmor.service (bsc#1129435)
+
+-------------------------------------------------------------------
+Fri Feb 15 10:41:36 UTC 2019 - varkoly@suse.com
+
+- spamassassin: migrate from cron to systemd timers (bsc#1115411)
+  enable spamassassin.timer by default 
+
+-------------------------------------------------------------------
+Mon Dec 10 11:30:45 UTC 2018 - rtorreromarijnissen@suse.com
+
+- enable unbound-anchor.timer to replace old cronjob (bsc#1115417)
+
+-------------------------------------------------------------------
+Fri Sep 14 09:46:08 UTC 2018 - meissner@suse.com
+
+- enable cpi.service for s390x (bsc#1106365)
+
+-------------------------------------------------------------------
+Wed Aug 29 11:49:02 UTC 2018 - meissner@suse.com
+
+- split out the common parts to systemd-presets-common-SUSE.
+  (FATE#326424)
+
+-------------------------------------------------------------------
+Mon Feb  5 11:28:07 CET 2018 - kukuk@suse.de
+
+- Enable backup-rpmdb.timer, backup-sysconfig.timer and
+  check-battery.timer, previously cron.daily jobs.
+
+-------------------------------------------------------------------
+Mon Jan 29 07:52:59 UTC 2018 - zren@suse.com
+
+- Enable lvm2-monitor.service by default (bsc#1072492) 
+- Enable lvm2-lvmpolld.socket by default (bsc#1074211)
+
+-------------------------------------------------------------------
+Tue Jan  2 21:17:07 CET 2018 - sbrabec@suse.com
+
+- Enable new kbdsettings.service (boo#1010880).
+
+-------------------------------------------------------------------
+Mon Jan  1 11:27:23 UTC 2018 - wr@rosenauer.org
+
+- enable pcscd socket activation by default to support smartcards
+  out of the box (boo#1063983)
+
+-------------------------------------------------------------------
+Tue Dec 12 10:07:43 CET 2017 - kukuk@suse.de
+
+- Don't disable services with preset-all in %posttrans, the network
+  is special and would be disabled.
+
+-------------------------------------------------------------------
+Mon Dec 11 16:17:30 CET 2017 - kukuk@suse.de
+
+- If we do a fresh installation, call systemctl preset-all in the
+  %posttrans section. Some services need to be installed before
+  systemd or do not strictly require systemd, so systemd would only
+  be installed after them and the systemd units of this package
+  never enabled.
+- Enable klog.service and rsyslog.service by default, currently
+  they enable themself always in post install section.
+- Sync default-SUSE.preset with systemd-presets-branding-openSUSE
+
+-------------------------------------------------------------------
+Mon Dec 11 11:23:51 CET 2017 - kukuk@suse.de
+
+- Add branding-preset-states script
+
+-------------------------------------------------------------------
+Fri Nov  3 11:02:14 UTC 2017 - olaf@aepfle.de
+
+- Remove SLE12 specific uuidd handling in %pre section
+
+-------------------------------------------------------------------
+Fri Nov  3 09:12:26 UTC 2017 - olaf@aepfle.de
+
+- Move common entries into default-SUSE.preset (bsc#1060676)
+
+-------------------------------------------------------------------
+Tue Oct 17 06:11:39 UTC 2017 - olaf@aepfle.de
+
+- Sort entries with :'<,'>!sort -t ' ' -k 2 (bsc#1060676)
+
+-------------------------------------------------------------------
+Thu Aug 24 12:59:51 UTC 2017 - meissner@suse.com
+
+- enable oracle.service. orarun would do it anywhere in their
+  package. (bsc#1052634)
+
+-------------------------------------------------------------------
+Tue Jun 20 08:59:59 CEST 2017 - kukuk@suse.de
+
+- Enable ca-certificates to run on boot and on demand to create
+  database in /var/lib/ca-certificates
+
+-------------------------------------------------------------------
+Tue Apr 11 08:08:10 CEST 2017 - behlert@suse.de
+
+- replace systemd macros with new scripts 
+
+-------------------------------------------------------------------
+Fri Mar 17 17:04:13 CET 2017 - sbrabec@suse.com
+
+- Remove superfluous uuidd.service. uuidd.socket is sufficient
+  (bsc#1012850#c8).
+
+-------------------------------------------------------------------
+Tue Feb 21 08:55:53 UTC 2017 - zren@suse.com
+
+- Enable socket/service(s) for lvm2 (bsc#1011053)
+
+-------------------------------------------------------------------
+Fri Feb 10 09:46:22 UTC 2017 - fbui@suse.com
+
+- Enable by default uuidd shipped by util-linux (bsc#1012850)
+
+  util-linux was previously shipping a preset file enabling uuidd by
+  default. This is now done here as other packages are not supposed to
+  ship their own preset rules.
+
+  Also increase the package version so util-linux can conflict with
+  the previous versions and hence will be updated *after* the new
+  version of the presets package is. This is important otherwise if
+  util-linux removed its preset file first, then the presets package
+  would believe a new change in the presets and you enable again
+  uuidd.
+
+-------------------------------------------------------------------
+Tue Jan 24 09:20:33 UTC 2017 - dimstar@opensuse.org
+
+- Enable the issue-generator.service by default: /etc/issue is in
+  progress of no longer being a static file, but being generated by
+  a service, which allows for much more flexible content (think
+  ssh key fingerprint or similar).
+
+-------------------------------------------------------------------
+Tue Nov 29 12:17:22 UTC 2016 - meissner@suse.com
+
+- added snapper-cleanup.timer and snapper-timeline.timer (bsc#1011891)
+
+-------------------------------------------------------------------
+Tue Jun 14 22:33:02 UTC 2016 - ken@suse.com
+
+- enable vmblock-fuse service for VMWare by default (bsc#986277)
+
+-------------------------------------------------------------------
+Tue May 31 14:46:56 UTC 2016 - meissner@suse.com
+
+- prerequire coreutils for mkdir and touch to be present (bsc#982337)
+
+-------------------------------------------------------------------
+Mon May  9 14:19:23 UTC 2016 - trenn@suse.de
+
+- Do not start mcelog service based on an udev (/dev/mcelog) rule
+  (bsc#976781), but enable it automatically at install time. 
+
+-------------------------------------------------------------------
+Fri May  6 10:12:34 UTC 2016 - meissner@suse.com
+
+- enable ixpdimm-monitor.service (bsc#978270)
+
+-------------------------------------------------------------------
+Thu Mar 31 13:02:37 UTC 2016 - fbui@suse.com
+
+- Previous commit forgot to remove %systemd_requires
+
+-------------------------------------------------------------------
+Thu Mar 31 09:13:22 UTC 2016 - fbui@suse.com
+
+- Do not explicitly require systemd package. This package is already
+  required by systemd and must be installed before it.
+
+  systemctl is only needed in %posttrans which should be available at
+  this step.
+
+  However the whole preset rpm macro thing looks really strange and
+  quite ugly. This should be revisited.
+
+-------------------------------------------------------------------
+Thu Mar 31 08:57:48 UTC 2016 - fbui@suse.com
+
+- Don't reload daemon in %post and %postun: there's no point.
+
+  - on package installation or upgrade, no services can be enabled or
+    disabled at the %post stage since it can happen only in
+    %posttrans.
+
+  - on package removal (not upgrade) which can't realistically happen,
+    systemd should not be present anymore.
+
+-------------------------------------------------------------------
+Thu Mar 24 10:17:46 UTC 2016 - meissner@suse.com
+
+- enable getty@.service multiplexer and remote-fs.service (bsc#972489)
+
+-------------------------------------------------------------------
+Mon Mar 14 21:28:01 UTC 2016 - jfehlig@suse.com
+
+- Add virtlogd.socket to default presets (bsc#971054)
+
+-------------------------------------------------------------------
+Wed Dec 16 12:19:34 UTC 2015 - eich@suse.com
+
+- Add display-manager.service to defaults presets (boo#958880). 
+
+-------------------------------------------------------------------
+Mon Oct  5 14:10:46 UTC 2015 - meissner@suse.com
+
+- enable rollback.service, FATE#319118 / bsc#948824
+
+-------------------------------------------------------------------
+Fri Sep 18 17:33:41 CEST 2015 - sbrabec@suse.com
+
+- Change uuidd activation hack to reflect systemd-rpm-macros change
+  (boo#946216#c6).
+
+-------------------------------------------------------------------
+Wed Sep 16 16:29:38 UTC 2015 - meissner@suse.com
+
+- enable opal_errd.service (ppc64 specific) (bsc#945390)
+
+-------------------------------------------------------------------
+Fri Sep 11 09:54:05 UTC 2015 - meissner@suse.com
+
+- enable the sapconf.service (one shot) (bsc#944761)
+
+-------------------------------------------------------------------
+Thu Aug 27 15:31:42 CEST 2015 - sbrabec@suse.com
+
+- Add %systemd_preset_pre and %systemd_preset_posttrans (one shot
+  preset makes possible to fix boo#921075, FATE#318949 and
+  FATE#317727 and all future requests to change service default).
+- Enable fstrim.timer and disable fstrim.service. TRIM should be
+  performed once a week and not on every boot (FATE#317727).
+- Enable smartd by default (bnc#921075).
+- Add hack to perform one shot preset on SLE12 Update -> SLE12 SP1
+  migration (bnc#900935#c46, FATE#318949).
+- Bump version to 12.1.
+
+-------------------------------------------------------------------
+Wed Jul 15 14:29:34 UTC 2015 - jkeil@suse.de
+
+- Enable updatedb timer for mlocate package
+  * Replaces cron.daily script
+
+-------------------------------------------------------------------
+Wed Jul 15 13:32:53 UTC 2015 - jkeil@suse.de
+
+- Enable timer for periodic password & group file integrity verification
+
+-------------------------------------------------------------------
+Wed Jul 15 08:28:23 UTC 2015 - olaf@aepfle.de
+
+- Remove xendomains.service from systemd preset file because it
+  conflicts with libvirt-guests.service (bnc#937371)
+  Its up to the admin to run systemctl enable xendomains.service
+
+-------------------------------------------------------------------
+Wed Apr  1 18:34:50 UTC 2015 - crrodriguez@opensuse.org
+
+- Native systemd unit apparmor.service need to be enabled 
+  by default.
+
+-------------------------------------------------------------------
+Tue Jan 13 17:51:26 UTC 2015 - olaf@aepfle.de
+
+- enable xencommons and xendomains (bnc#897352)
+
+-------------------------------------------------------------------
+Thu Nov 20 17:07:10 UTC 2014 - gber@opensuse.org
+
+- enable storage-fixup.service by default due to conversion
+
+-------------------------------------------------------------------
+Tue Sep 23 11:27:01 UTC 2014 - meissner@suse.com
+
+- enable the btrfsmaintenance-refresh.service that generates
+  cron snippets from /etc/sysconfig/btrfsmaintenance that
+  do auto-balancing etc. bnc#897948
+
+-------------------------------------------------------------------
+Tue Jul  1 11:44:56 UTC 2014 - meissner@suse.com
+
+- enable the cio_ignore.server for s390x (bnc#885245)
+
+-------------------------------------------------------------------
+Thu Jun 26 09:07:37 UTC 2014 - glin@suse.com
+
+- enable wpa_supplicant.service (bnc#860885 comment#20)
+
+-------------------------------------------------------------------
+Fri Jun 13 14:43:15 UTC 2014 - meissner@suse.com
+
+- enable rtas_errd.service by default (bnc#882450)
+
+-------------------------------------------------------------------
+Thu May 29 05:27:18 UTC 2014 - lwang@suse.com
+
+- enable lvm2-lvmetad.socket (bnc#878473)
+
+-------------------------------------------------------------------
+Wed May 14 13:18:37 UTC 2014 - meissner@suse.com
+
+- enable 3 IPR device / Power specific tools (bnc#877576)
+
+-------------------------------------------------------------------
+Wed Apr 16 11:47:32 UTC 2014 - meissner@suse.com
+
+- enable vmtoolsd service for VMWare by default (bnc#873935 bnc#870737)
+
+-------------------------------------------------------------------
+Fri Apr 11 09:22:24 UTC 2014 - meissner@suse.com
+
+- enabled irqbalance service by default bnc#870619
+
+-------------------------------------------------------------------
+Fri Apr 11 08:58:36 UTC 2014 - meissner@suse.com
+
+- enable auditd by default. bnc#872066
+
+-------------------------------------------------------------------
+Wed Apr  2 23:54:58 UTC 2014 - crrodriguez@opensuse.org
+
+- Enable the logrotate.timer that replaces the cron-based
+  activation by default.
+
+-------------------------------------------------------------------
+Mon Mar 31 13:25:32 UTC 2014 - meissner@suse.com
+
+- remove cups.service autostart bnc#870425
+
+-------------------------------------------------------------------
+Thu Mar 27 13:36:30 UTC 2014 - meissner@suse.com
+
+- enable haveged by default (as previously in SLE11) bnc#870385 /
+  FATE#312210
+
+-------------------------------------------------------------------
+Tue Mar 18 17:00:00 UTC 2014 - tbehrens@suse.com
+
+- enable readonly-root.service (as previously also enabled in SLE11)
+  bnc#868998
+
+-------------------------------------------------------------------
+Fri Feb 21 15:23:05 UTC 2014 - meissner@suse.com
+
+- enable libvirtd.service (as previously also enabled in SLE11)
+  bnc#863552
+
+-------------------------------------------------------------------
+Wed Feb 12 16:35:33 UTC 2014 - meissner@suse.com
+
+- bump version to match product
+- use ISC license as suggested.
+
+-------------------------------------------------------------------
+Wed Feb 12 13:21:57 UTC 2014 - meissner@suse.com
+
+- do not own entire /usr/lib/systemd, this is wrong.
+- list systemd directories as %dir
+
+-------------------------------------------------------------------
+Sun Feb  2 09:49:53 CET 2014 - ohering@suse.de
+
+- Own entire /usr/lib/systemd
+
+-------------------------------------------------------------------
+Sat Feb  1 09:54:04 CET 2014 - ohering@suse.de
+
+- Revert last change for hyper-v.rpm 
+  Both daemons are started on demand via udev rules.
+
+-------------------------------------------------------------------
+Wed Dec 18 15:54:08 CET 2013 - ohering@suse.de
+
+- Enable hv_kvp_daemon and hv_vss_daemon from hyper-v pkg
+
+-------------------------------------------------------------------
+Thu Oct 17 10:38:17 PDT 2013 - lduncan@suse.com
+
+- Enable iscsid socket and iscsi service by default when
+  installed (bnc#827654).
+
+-------------------------------------------------------------------
+Wed Jul 31 15:52:59 UTC 2013 - fcrozat@suse.com
+
+- Enable ModemManager.service is enabled when installed (it will be
+  dbus-activated by NM).
+
+-------------------------------------------------------------------
+Thu Jul 25 12:12:04 UTC 2013 - fcrozat@suse.com
+
+- Rename main default file to 90-default-openSUSE.preset and move
+  the "disable everything" part to a separate file
+  "99-default-disable.preset". This allows fine tuning with
+  additional files, if needed (same as Fedora).
+
+-------------------------------------------------------------------
+Fri May  3 11:30:28 UTC 2013 - meissner@suse.com
+
+- as we have multiversion kernels enabled by default, we also
+  need to enable purge-kernels by default (bnc#818317).
+
+-------------------------------------------------------------------
+Fri Feb 22 09:04:00 UTC 2013 - mt@suse.com
+
+- Do not unconditionally enable NetworkManager service as this
+  breaks running /etc/init.d/network on update (bnc#803058).
+
+-------------------------------------------------------------------
+Wed Oct 17 13:07:59 UTC 2012 - fcrozat@suse.com
+
+- Change location of presets with latest systemd.
+
+-------------------------------------------------------------------
+Tue Sep 11 12:40:36 UTC 2012 - aj@suse.de
+
+- Add nscd service (bnc#778981).
+
+-------------------------------------------------------------------
+Wed Jul  4 11:36:54 UTC 2012 - fcrozat@suse.com
+
+- Add cups units (service, path and socket) (bnc#769346).
+
+-------------------------------------------------------------------
+Mon Dec 12 10:17:57 UTC 2011 - fcrozat@suse.com
+
+- Add postfix (bnc#727403).
+
+-------------------------------------------------------------------
+Wed Oct 26 13:58:29 UTC 2011 - lnussel@suse.de
+
+- don't enable sysstat by default (bnc#725791)
+
+-------------------------------------------------------------------
+Mon Oct 17 15:59:43 UTC 2011 - fcrozat@suse.com
+
+- Add sysstat.service (bnc#723858).
+
+-------------------------------------------------------------------
+Sun Oct 16 09:52:50 UTC 2011 - coolo@suse.com
+
+- buildignore branding for systemd to avoid bootstrap cycle
+
+-------------------------------------------------------------------
+Fri Oct  7 12:55:48 UTC 2011 - fcrozat@suse.com
+
+- Add Yast2 FirstBoot and Second Stage.
+
+-------------------------------------------------------------------
+Thu Sep 29 10:47:35 UTC 2011 - fcrozat@suse.com
+
+- Don't enable avahi-dnsconfd.service after all.
+
+-------------------------------------------------------------------
+Thu Sep 29 09:50:25 UTC 2011 - fcrozat@suse.com
+
+- Enable avahi-daemon.service and avahi-dnsconfd.service
+
+-------------------------------------------------------------------
+Thu Sep 29 09:09:29 UTC 2011 - fcrozat@suse.com
+
+- Enable cron.service
+
+-------------------------------------------------------------------
+Mon Sep 26 16:13:37 UTC 2011 - fcrozat@suse.com
+
+- Initial package
+

@@ -1,0 +1,5 @@
+<directory name="systemd-presets-branding-SMO" rev="1" vrev="1" srcmd5="6907afcb5995f2345a4fbdec4eed3fd4">
+  <entry name="50-default-SUSE_MicroOS.preset" md5="8844cd0d63e80cc4d66846d74ebddd34" size="614" mtime="1602779186" />
+  <entry name="systemd-presets-branding-SMO.changes" md5="d5c5bf111fc2b62211f3b7d47c3d70ae" size="314" mtime="1602779186" />
+  <entry name="systemd-presets-branding-SMO.spec" md5="9c743389ea8b198da7ddaef26de59829" size="3126" mtime="1602779185" />
+</directory>

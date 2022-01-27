@@ -1,0 +1,172 @@
+# 'OUTPUT' is not a group, this defines the entry point for the solver.
+# there is an entry for every group file that needs to be written out.
+# the name of it needs to exist as package group as well and the solver
+# will take the instructions in this group and the included ones
+# (that's why sle_minimal is included to get minimal instructions)
+# and solve the packages in it (one by one next to 'silents' and 'locks')
+# and then at the end remove packages in the 'excludes'.
+# excludes are not package groups but solved module groups
+OUTPUT:
+  - opensuse_microos:
+      recommends: false
+      includes:
+      - filesystems
+      - supplements
+      - kernel
+      - base
+    
+opensuse_microos:
+    - MicroOS-release
+    - MicroOS-release-dvd
+    - gtk2-branding-SLED: [locked]
+    # don't interfere with crony
+    - ntp: [locked]
+
+base:
+    # silent means it's always added for solving too
+    - MicroOS-release: [silent]
+    - MicroOS-release-dvd: [silent]
+    - systemd-presets-branding-MicroOS
+    - patterns-microos-base
+    - patterns-microos-defaults
+    - patterns-microos-hardware
+    - patterns-microos-container_runtime
+    - patterns-microos-salt_minion
+    - patterns-microos-kvm_host
+    - patterns-microos-selinux
+    - patterns-microos-cockpit
+    - grub2 #  Initial package for SLE 15
+    - grub2-branding-openSUSE: [x86_64,aarch64,ppc64le] #  Initial package for SLE 15
+    - grub2-i386-pc: [x86_64] #  TBD Initial package for SLE 15
+    - grub2-snapper-plugin #  Initial package for SLE 15
+#    - grub2-systemd-sleep-plugin #  Initial package for SLE 15
+    - grub2-x86_64-efi: [x86_64] #  Initial package for SLE 15
+#    - grub2-s390x-emu #  dependency:grub2
+#    - grub2-powerpc-ieee1275 #  dependency:grub2
+    - grub2-arm64-efi: [aarch64]  #  dependency:shim
+    - grub2-x86_64-xen: [x86_64] #  Initial package for SLE 15
+    - shim: [x86_64]
+    - firewalld
+    - glibc-locale-base # (bsc#1176114)
+    - plymouth # bsc#1067481
+    - plymouth-dracut # bsc#1067481
+    - plymouth-plugin-label-ft # jsc#SLE-11080
+    # Have a bootable system for RPi3/4 - boo#1172574
+    - raspberrypi-firmware: [aarch64]  # bsc 1130015
+    - raspberrypi-firmware-config: [aarch64]  # bsc 1130015
+    - raspberrypi-firmware-dt: [aarch64]  # bsc 1130015
+    - u-boot-rpiarm64: [aarch64]  # bsc 1130015, jsc SLE-7276 / bsc 1164080
+    - u-boot-rpiarm64-doc: [aarch64]  # jsc SLE-7276 / bsc 1164080
+
+staging:
+    -  staging-build-key
+
+kernel:
+    - kernel-default
+    - kernel-default-base
+    - kernel-kvmsmall: [x86_64]
+    - kernel-rt: [x86_64]
+    # TODO: yast needs this. confirm where it comes from any why it's not in
+    # the base pattern.
+    - kexec-tools
+    # installed in uefi mode
+    - mokutil: [x86_64]
+
+filesystems:
+    - dosfstools
+    - e2fsprogs
+    - btrfsprogs
+    - squashfs
+    - xfsprogs
+
+supplements:
+    - kernel-firmware
+    - bluez-firmware
+    - ipw-firmware
+    - open-vm-tools: [x86_64]
+    - hyper-v: [x86_64]
+    - ucode-amd: [x86-64]
+    - ucode-intel: [x86_64]
+    - bcache-tools
+    - cryptsetup
+    - glibc-locale
+    - iscsiuio
+    - lvm2
+    - multipath-tools
+    - nvme-cli
+    - open-iscsi
+    - vim
+    - less
+    - wpa_supplicant
+    - dracut-kiwi-lib
+    - dracut-kiwi-oem-repart
+    - gptfdisk
+    - growpart
+    - growpart-generator
+    - ignition
+    - ignition-dracut-grub2
+    - combustion
+    - mdadm
+    - attr
+
+# packages in here are blocked from required on medium by means of
+# telling the solver to forbid using them. A lighter form is to
+# add packages to unneeded.yml - this just protocols the decision
+# not to put them in any module *at this point*.
+UNWANTED:
+  - systemd-presets-branding-SLE
+  - dummy-release
+  - unified-installer-release
+  - kubic-locale-archive (bsc#1176114)
+
+  # stuff below inherited from SLE15-SP2
+  - chrony-pool-openSUSE # bsc#1156884 / jsc#SLE-11424
+  - sendmail # fate#313023
+  - ntfsprogs-extra # not safe
+  - libfbclient-devel # jsc#SLE-11695
+  - libfbclient2 # jsc#SLE-11695
+
+  - reiserfs # FATE#323394
+  - rpm-ndb
+
+  # glusterfs packages, not wanted by PM
+  - libglusterfs0
+
+  # upstream
+  - gdm-branding-upstream
+  - gfxboot-branding-upstream
+  - gio-branding-upstream
+  - gnome-menus-branding-upstream
+  - grub2-branding-upstream
+  - gtk2-branding-upstream
+  - gtk3-branding-upstream
+  - NetworkManager-branding-upstream
+  - PackageKit-branding-upstream
+  - MozillaFirefox-branding-upstream
+  - icewm-config-upstream # bsc#1063272
+
+  # unwanted JREs
+  - java-1_7_0-bootstrap-headless
+  - java-9-openjdk-headless
+
+  - slecompliance # bsc#1158969
+
+  - golang-github-prometheus-prometheus # rejected jsc#ECO-1659
+
+  # dnf
+  - PackageKit-backend-dnf # jsc#SLE-11804
+  - hawkey-man # jsc#SLE-11804
+  - libdnf-devel # jsc#SLE-11804
+  - libdnf2 # jsc#SLE-11804
+  - libmodulemd-devel # jsc#SLE-11804
+  - libmodulemd2 # jsc#SLE-11804
+  - librepo-devel # jsc#SLE-11804
+  - librepo0 # jsc#SLE-11804
+  - libzck-devel # jsc#SLE-11804
+  - modulemd-validator # jsc#SLE-11804
+  - python3-hawkey # jsc#SLE-11804
+  - python3-libdnf # jsc#SLE-11804
+  - python3-libmodulemd # jsc#SLE-11804
+  - python3-librepo # jsc#SLE-11804
+  - typelib-1_0-Modulemd-2_0 # jsc#SLE-11804
+

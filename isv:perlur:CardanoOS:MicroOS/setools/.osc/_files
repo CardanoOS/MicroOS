@@ -1,0 +1,5 @@
+<directory name="setools" rev="1" vrev="1" srcmd5="cea76dbf6df99916c9fe900887c00073">
+  <entry name="setools-4.3.0.tar.bz2" md5="ba6e5ec442108eef481e3a3fbb25141d" size="249694" mtime="1585904157" />
+  <entry name="setools.changes" md5="331b19318e3f017eca0207c3572aefab" size="9848" mtime="1603265435" />
+  <entry name="setools.spec" md5="3b4e3e32d23fb4eecd421dba3a62a73c" size="4175" mtime="1603265435" />
+</directory>

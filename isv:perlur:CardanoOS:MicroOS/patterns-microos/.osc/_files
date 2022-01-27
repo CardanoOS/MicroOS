@@ -1,0 +1,5 @@
+<directory name="patterns-microos" rev="1" vrev="1" srcmd5="f186151eb93d720c6e3c04036270fa45">
+  <entry name="patterns-microos-rpmlintrc" md5="aa85713cb3efc055d5cb61f332ea2683" size="350" mtime="1553091127" />
+  <entry name="patterns-microos.changes" md5="6a78a18e2c51ce4cbafb7fcb53365e07" size="3035" mtime="1611750301" />
+  <entry name="patterns-microos.spec" md5="418ef9637dfc8c2c6a479951840403e4" size="10057" mtime="1611750301" />
+</directory>

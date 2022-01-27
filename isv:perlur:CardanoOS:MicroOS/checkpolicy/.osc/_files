@@ -1,0 +1,6 @@
+<directory name="checkpolicy" rev="1" vrev="1" srcmd5="9c3d3c44f2775b0e279322c8b882c43e">
+  <entry name="checkpolicy-3.1.tar.gz" md5="1302676cd8853f740a963fd6d5bb4172" size="69072" mtime="1594715499" />
+  <entry name="checkpolicy-tests.tar.gz" md5="f97f0967b1b090df7256792d6c9abdae" size="13993" mtime="1523223624" />
+  <entry name="checkpolicy.changes" md5="1878da00d1fdfe500c2559cd2160767f" size="7650" mtime="1594719658" />
+  <entry name="checkpolicy.spec" md5="a39312220154379abf9379a9efbaa1cc" size="2937" mtime="1594719659" />
+</directory>

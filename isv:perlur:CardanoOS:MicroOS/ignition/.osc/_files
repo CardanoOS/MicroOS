@@ -1,0 +1,24 @@
+<directory name="ignition" rev="1" vrev="1" srcmd5="c123585e3e4b812f25beca8ef58f51f7">
+  <serviceinfo code="succeeded" xsrcmd5="bd90aaa89e0347debcdddd1911f751af" />
+  <entry name="0001-fix-install-permissions.patch" md5="450b06441c08e315484b7a20916dddf5" size="986" mtime="1597224637" />
+  <entry name="0002-allow-multiple-mounts-of-same-device.patch" md5="776d66a97a4c34a782e54b61d540e1f8" size="1208" mtime="1589187141" />
+  <entry name="0003-fix-i386-build.patch" md5="3bb3ed20dfb339f42ab2fa7c79fa4970" size="523" mtime="1597070987" />
+  <entry name="02_ignition_firstboot" md5="f208217905121130244b3380ab8d53e4" size="938" mtime="1599221317" />
+  <entry name="README.SUSE" md5="c55180db84cd75b873658b041f8a86d8" size="2095" mtime="1597051696" />
+  <entry name="_service" md5="e9ff24f5e50126885678f1edc3e86a98" size="550" mtime="1597051696" />
+  <entry name="_servicedata" md5="4636a47064b01e3ffc70a0e5d6279157" size="217" mtime="1597051696" />
+  <entry name="change-ignition-firstboot-path.conf" md5="8600fb8c24e3cd13ec776a55d4b436e5" size="80" mtime="1597051696" />
+  <entry name="ignition-2.6.0.tar.xz" md5="e3af2d8b3bbae30b513832b5bdb9edf1" size="2243008" mtime="1597051697" />
+  <entry name="ignition-enable-network.service" md5="09211b7695098d85a6715807ba84211f" size="616" mtime="1597051719" />
+  <entry name="ignition-enable-network.sh" md5="a4030cec4ffba23e0c7055205a4b19db" size="355" mtime="1600410910" />
+  <entry name="ignition-fix-arm32-installation.patch" md5="40b81d78302c22afd9506d0110884ca4" size="339" mtime="1597747370" />
+  <entry name="ignition-mount-initrd-fstab.service" md5="c1465a8bdd2f302350c1232855267a89" size="988" mtime="1597224638" />
+  <entry name="ignition-rpmlintrc" md5="b712ffb3f76106e60bf5a2e1beb6b0fe" size="64" mtime="1597051698" />
+  <entry name="ignition-setup-user-suse.sh" md5="5a87a1e25da7e7602286e1921c20101f" size="1058" mtime="1597051698" />
+  <entry name="ignition-suse-generator" md5="09e1d34f1c9b387830f34e08191cfe88" size="1026" mtime="1599205219" />
+  <entry name="ignition-userconfig-timeout-arm.conf" md5="4fffee527e35a7586b363aa22ce8703b" size="24" mtime="1597051698" />
+  <entry name="ignition-userconfig-timeout.conf" md5="8ed98ee6e48977da074cfc652f26c807" size="24" mtime="1597051699" />
+  <entry name="ignition.changes" md5="ebc541a213e84590ed7fb189d6a2c23f" size="46698" mtime="1600410910" />
+  <entry name="ignition.spec" md5="151aa4d8127ea6e33276386571fe4d53" size="6090" mtime="1599205219" />
+  <entry name="module-setup.sh" md5="60b6a79f0fdff3e96651c566edc2f936" size="992" mtime="1599205220" />
+</directory>

@@ -1,0 +1,9 @@
+<directory name="python-semanage" rev="1" vrev="1" srcmd5="2f65c3b3275d006832870c1bf23c17dc">
+  <entry name="baselibs.conf" md5="57d6e0f810c385d3b2fb916618d952dc" size="13" mtime="1305725945" />
+  <entry name="libsemanage-3.1.tar.gz" md5="d16eee8c1dc8cf43f59957d575d6bd29" size="179601" mtime="1594715970" />
+  <entry name="libsemanage.changes" md5="8b38494bc4acca1077b04520f9c58950" size="15296" mtime="1596033457" />
+  <entry name="libsemanage.spec" md5="56271f4363e31bafb3b66530eda938ff" size="5089" mtime="1596045379" />
+  <entry name="python-semanage.changes" md5="6fe37aebecdeeec976b59ba8b51710c8" size="11461" mtime="1594715970" />
+  <entry name="python-semanage.spec" md5="97eae7577e9912476695f9fab1fb66db" size="3202" mtime="1594715970" />
+  <entry name="semanage.conf" md5="ee2b3ef1d182b83f80bca198d929e614" size="2321" mtime="1362652786" />
+</directory>

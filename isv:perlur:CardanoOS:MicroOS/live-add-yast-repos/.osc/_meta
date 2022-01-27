@@ -1,0 +1,5 @@
+<package name="live-add-yast-repos" project="openSUSE:Leap:15.2:MicroOS">
+  <title>Files that make the net installer available on the live media</title>
+  <description/>
+</package>
+

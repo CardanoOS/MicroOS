@@ -1,0 +1,9 @@
+<package name="SUSE-MicroOS" project="openSUSE:Leap:15.2:MicroOS">
+  <title>SUSE-MicroOSNG</title>
+  <description/>
+  <build>
+    <disable/>
+  </build>
+  <bcntsynctag>product</bcntsynctag>
+</package>
+

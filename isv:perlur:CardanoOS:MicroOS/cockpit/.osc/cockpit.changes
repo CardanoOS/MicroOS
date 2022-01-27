@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed Dec 16 13:40:56 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- cockpit_assets.tar.gz branding_tests.patch: SUSE branding hack
+
+-------------------------------------------------------------------
+Wed Nov 18 11:32:13 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Initial package based on upstream specfile in rhel-7.9 and
+  openSUSE:Factory version of cockpit
+
+  https://cockpit-project.org/blog/cockpit-195
+

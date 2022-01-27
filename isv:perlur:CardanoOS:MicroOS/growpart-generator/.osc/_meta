@@ -1,0 +1,5 @@
+<package name="growpart-generator" project="openSUSE:Leap:15.2:MicroOS">
+  <title>Grow a partition</title>
+  <description>Grow a partition. This is predominantly useful in the cloud when an instance is started with a larger root partition than the image size. The root partition can be expanded to take up the additional size.</description>
+</package>
+

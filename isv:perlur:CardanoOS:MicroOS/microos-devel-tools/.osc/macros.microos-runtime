@@ -1,0 +1,3 @@
+# https://github.com/openSUSE/rpm-config-SUSE/pull/24
+# avoid overwriting files that didn't actually change on disk
+%_minimize_writes	1

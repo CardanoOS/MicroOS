@@ -1,0 +1,11 @@
+<directory name="000package-groups" rev="32" vrev="32" srcmd5="c2c30b95c46e4ada53cc3ca4b8f14d73">
+  <entry name="MicroOS-release.spec.in" md5="113ca2bfe0b2312572abf616dc7eea54" size="5992" mtime="1588154015" />
+  <entry name="MicroOS.product.in" md5="37616ee21f47334445e5d6db84381c13" size="4780" mtime="1594915322" />
+  <entry name="NON_FTP_PACKAGES.group" md5="ca03cd18cd646d25e1453f6dabcc542c" size="16946" mtime="1569236777" />
+  <entry name="NON_FTP_PACKAGES_OSS.group" md5="75ecc9f14ecd2a290986b1186b37a511" size="450" mtime="1509731021" />
+  <entry name="_constraints" md5="e2c2c446054bf53e10cf431ae91fa83d" size="328" mtime="1596466422" />
+  <entry name="defaults-archsets.include" md5="c9b9fb24340880cf3df005c152bb79b6" size="1619" mtime="1547558620" />
+  <entry name="defaults-conditionals.include" md5="fe22b0fed922ba8c2c08cd16a51dcd3f" size="1727" mtime="1548134094" />
+  <entry name="defaults-repositories.include" md5="00821dfba25a84b8c28207f10735df4b" size="133" mtime="1547721427" />
+  <entry name="groups.yml" md5="f991bb19b2ca65c3216e8d4580f28c21" size="5151" mtime="1611831736" />
+</directory>

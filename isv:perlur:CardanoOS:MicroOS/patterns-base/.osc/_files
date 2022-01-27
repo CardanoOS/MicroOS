@@ -1,0 +1,9 @@
+<directory name="patterns-base" rev="296e10001ebf4e866f4b218dd15f4508" srcmd5="296e10001ebf4e866f4b218dd15f4508">
+  <linkinfo project="openSUSE:Leap:15.2:Update" package="patterns-base" srcmd5="1206bcda609c13e7e6b269b7e09aadc8" baserev="1206bcda609c13e7e6b269b7e09aadc8" lsrcmd5="59d919241630691ae557b3d006a055e8" />
+  <entry name="create_32bit-patterns_file.pl" md5="2ca9d15c3b0937f47fe1e9f0e8dd56ad" size="4568" mtime="1519140845" />
+  <entry name="pattern-definition-32bit.txt" md5="9a9b5884832f38126275c3d9f191736b" size="13139" mtime="1569329905" />
+  <entry name="patterns-base-rpmlintrc" md5="a921f8aaa94cd52f3dc00737add17279" size="29" mtime="1489644435" />
+  <entry name="patterns-base.changes" md5="c44ea56ee697d6da310ce40b21c63a26" size="188915" mtime="1606925662" />
+  <entry name="patterns-base.spec" md5="414fde1c9734de698df1ef649210908c" size="34481" mtime="1606928328" />
+  <entry name="pre_checkin.sh" md5="104d534f1ec9b29dde24311280002019" size="253" mtime="1552037169" />
+</directory>

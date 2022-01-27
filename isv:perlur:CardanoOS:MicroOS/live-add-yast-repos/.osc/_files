@@ -1,0 +1,6 @@
+<directory name="live-add-yast-repos" rev="1" vrev="1" srcmd5="9e7acd648b37ab4c3ff9b05fd343d730">
+  <entry name="geturls.xsl" md5="707f4f189ad086d2a4f6cb3cc906bddb" size="1120" mtime="1544457875" />
+  <entry name="gpl-2.0.txt" md5="b234ee4d69f5fce4486a80fdaf4a4263" size="18092" mtime="1502263962" />
+  <entry name="live-add-yast-repos.changes" md5="d6a84fedba259671e09177c274d39604" size="676" mtime="1590486513" />
+  <entry name="live-add-yast-repos.spec" md5="ae82cd101f161787d976c00269ca6e42" size="1561" mtime="1590486875" />
+</directory>

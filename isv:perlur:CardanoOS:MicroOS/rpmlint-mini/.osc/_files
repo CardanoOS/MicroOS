@@ -1,0 +1,11 @@
+<directory name="rpmlint-mini" rev="1" vrev="1" srcmd5="06d206b53f1ad700ef777ce01ea024af">
+  <entry name="appdata_checker.config" md5="429dfde08f0405952bcbeccb5e4ef501" size="77" mtime="1481291761" />
+  <entry name="desktop-file-utils-0.23.tar.xz" md5="599133d51cc9a41bfec186414906b6f1" size="132000" mtime="1477671777" />
+  <entry name="polkit-default-privs.config" md5="0d1512a7ca088b2419c58cefd6540c13" size="120" mtime="1267178931" />
+  <entry name="rpmlint-deps.txt" md5="d3c5c6df22a1b8f4f6fdff219668654d" size="3482" mtime="1512403442" />
+  <entry name="rpmlint-mini.changes" md5="99f572067b2a1ee134127ae32ca178a6" size="15597" mtime="1605543760" />
+  <entry name="rpmlint-mini.config" md5="d9d7672dfff0659d368afb7ff78a3ea5" size="621" mtime="1506777445" />
+  <entry name="rpmlint-mini.rpmlintrc" md5="9e3ce727eee77df4129b7ee694a684be" size="127" mtime="1351415219" />
+  <entry name="rpmlint-mini.spec" md5="2258c4094cea28017ee73e8794031974" size="5160" mtime="1605543760" />
+  <entry name="rpmlint.wrapper" md5="fcbbfdf784fa0ff08660af7dc01e9077" size="403" mtime="1585351935" />
+</directory>

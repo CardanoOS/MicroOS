@@ -1,0 +1,240 @@
+From 8b1d1e81837dc042fc40ae876a00e46a8dccc3e3 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Wed, 30 Sep 2020 21:20:32 +0200
+Subject: [PATCH 1/1] Restore support for halt.local
+
+This patch basically reverts the following commits:
+
+  - commit 452d2dfd52f1cc686395663a6cd4c778306bd309.
+    "meson: RC_LOCAL_SCRIPT_PATH_START to RC_LOCAL_PATH"
+
+  - commit 44508946534eee032927c263b79464832656dd6e.
+    "Drop support for /usr/sbin/halt.local"
+
+  - commit c0d11245d2bdcf2a4333c3d49c973d83dfbe3791.
+    "Drop no longer needed halt-local.service.in"
+
+  - commit 9353607ef3cff4902296268bab0ccc82dc8b04c2
+    man: substitute path to rc.local in the man page
+
+The paths of the scripts in man/systemd-rc-local-generator.xml have been
+changed to match those used by SUSE.
+---
+ docs/DISTRO_PORTING.md                      |  1 +
+ man/custom-entities.ent.in                  |  3 ++-
+ man/systemd-rc-local-generator.xml          | 28 ++++++++++++---------
+ meson.build                                 |  7 ++++--
+ meson_options.txt                           |  2 ++
+ src/rc-local-generator/rc-local-generator.c |  8 +++++-
+ units/halt-local.service.in                 | 22 ++++++++++++++++
+ units/meson.build                           |  1 +
+ units/rc-local.service.in                   |  8 +++---
+ 9 files changed, 60 insertions(+), 20 deletions(-)
+ create mode 100644 units/halt-local.service.in
+
+diff --git a/docs/DISTRO_PORTING.md b/docs/DISTRO_PORTING.md
+index 2e4782f401..8c2af4f82f 100644
+--- a/docs/DISTRO_PORTING.md
++++ b/docs/DISTRO_PORTING.md
+@@ -17,6 +17,7 @@ distribution:
+    * `-Dsysvinit-path=`
+    * `-Dsysvrcnd-path=`
+    * `-Drc-local=`
++   * `-Dhalt-local=`
+    * `-Dloadkeys-path=`
+    * `-Dsetfont-path=`
+    * `-Dtty-gid=`
+diff --git a/man/custom-entities.ent.in b/man/custom-entities.ent.in
+index dc4b242fc3..b471a63cca 100644
+--- a/man/custom-entities.ent.in
++++ b/man/custom-entities.ent.in
+@@ -10,4 +10,5 @@
+ <!ENTITY MEMORY_ACCOUNTING_DEFAULT @MEMORY_ACCOUNTING_DEFAULT_YES_NO@>
+ <!ENTITY KILL_USER_PROCESSES @KILL_USER_PROCESSES_YES_NO@>
+ <!ENTITY DEBUGTTY @DEBUGTTY@>
+-<!ENTITY RC_LOCAL_PATH @RC_LOCAL_PATH@>
++<!ENTITY RC_LOCAL_SCRIPT_PATH_START @RC_LOCAL_SCRIPT_PATH_START@>
++<!ENTITY RC_LOCAL_SCRIPT_PATH_STOP @RC_LOCAL_SCRIPT_PATH_STOP@>
+diff --git a/man/systemd-rc-local-generator.xml b/man/systemd-rc-local-generator.xml
+index b51f50a1e1..bdd123caa4 100644
+--- a/man/systemd-rc-local-generator.xml
++++ b/man/systemd-rc-local-generator.xml
+@@ -19,7 +19,7 @@
+ 
+   <refnamediv>
+     <refname>systemd-rc-local-generator</refname>
+-    <refpurpose>Compatibility generator for starting <filename>&RC_LOCAL_PATH;</filename> during boot</refpurpose>
++    <refpurpose>Compatibility generator for starting <filename>&RC_LOCAL_SCRIPT_PATH_START;</filename> and <filename>&RC_LOCAL_SCRIPT_PATH_STOP;</filename> during boot and shutdown</refpurpose>
+   </refnamediv>
+ 
+   <refsynopsisdiv>
+@@ -30,17 +30,21 @@
+     <title>Description</title>
+ 
+     <para><filename>systemd-rc-local-generator</filename> is a generator that checks whether
+-    <filename>&RC_LOCAL_PATH;</filename> exists and is executable, and if it is pulls the
+-    <filename>rc-local.service</filename> unit into the boot process. This unit is responsible for running
+-    this script during late boot. Note that the script will be run with slightly different semantics than the
+-    original System V version, which was run "last" in the boot process, which is a concept that does not
+-    translate to systemd. The script is run after <filename>network.target</filename>, but in parallel with
+-    most other regular system services.</para>
+-
+-    <para>Support for <filename>&RC_LOCAL_PATH;</filename> is provided for compatibility with specific System
+-    V systems only. However, it is strongly recommended to avoid making use of this script today, and instead
+-    provide proper unit files with appropriate dependencies for any scripts to run during the boot process.
+-    Note that the path to the script is set a compile time and varies between distributions.</para>
++    <filename>&RC_LOCAL_SCRIPT_PATH_START;</filename> exists and is executable, and if it is pulls the
++    <filename>rc-local.service</filename> unit into the boot process. This unit is responsible for running this script
++    during late boot. Note that the script will be run with slightly different semantics than the original System V
++    version, which was run "last" in the boot process, which is a concept that does not translate to systemd. The
++    script is run after <filename>basic.target</filename>, but in parallel with most other regular system
++    services.</para>
++
++    <para><filename>systemd-rc-local-generator</filename> also checks whether <filename>&RC_LOCAL_SCRIPT_PATH_STOP;</filename>
++    exists and is executable, and if it is pulls the <filename>halt-local.service</filename> unit into the shutdown
++    process. This unit is responsible for running this script during later shutdown.</para>
++
++    <para>Support for both <filename>&RC_LOCAL_SCRIPT_PATH_START;</filename> and <filename>&RC_LOCAL_SCRIPT_PATH_STOP;</filename> is provided
++    for compatibility with specific System V systems only. However, it is strongly recommended to avoid making use of
++    these scripts today as they are deprecated and removed in the near future, and instead provide proper unit
++    files with appropriate dependencies for any scripts to run during the boot or shutdown processes.</para>
+ 
+     <para><filename>systemd-rc-local-generator</filename> implements
+     <citerefentry><refentrytitle>systemd.generator</refentrytitle><manvolnum>7</manvolnum></citerefentry>.</para>
+diff --git a/meson.build b/meson.build
+index cfb9ffdb84..705b5e25fe 100644
+--- a/meson.build
++++ b/meson.build
+@@ -209,7 +209,8 @@ conf.set_quoted('SYSTEM_CONFIG_UNIT_DIR',                     join_paths(pkgsysc
+ conf.set_quoted('SYSTEM_DATA_UNIT_PATH',                      systemunitdir)
+ conf.set_quoted('SYSTEM_SYSVINIT_PATH',                       sysvinit_path)
+ conf.set_quoted('SYSTEM_SYSVRCND_PATH',                       sysvrcnd_path)
+-conf.set_quoted('RC_LOCAL_PATH',                              get_option('rc-local'))
++conf.set_quoted('RC_LOCAL_SCRIPT_PATH_START',                 get_option('rc-local'))
++conf.set_quoted('RC_LOCAL_SCRIPT_PATH_STOP',                  get_option('halt-local'))
+ 
+ conf.set('ANSI_OK_COLOR',                                     'ANSI_' + get_option('ok-color').underscorify().to_upper())
+ 
+@@ -296,7 +297,8 @@ substs.set('CERTIFICATEROOT',                                 get_option('certif
+ substs.set('RANDOM_SEED',                                     join_paths(randomseeddir, 'random-seed'))
+ substs.set('SYSTEM_SYSVINIT_PATH',                            sysvinit_path)
+ substs.set('SYSTEM_SYSVRCND_PATH',                            sysvrcnd_path)
+-substs.set('RC_LOCAL_PATH',                                   get_option('rc-local'))
++substs.set('RC_LOCAL_SCRIPT_PATH_START',                      get_option('rc-local'))
++substs.set('RC_LOCAL_SCRIPT_PATH_STOP',                       get_option('halt-local'))
+ substs.set('MEMORY_ACCOUNTING_DEFAULT',                       memory_accounting_default ? 'yes' : 'no')
+ substs.set('STATUS_UNIT_FORMAT_DEFAULT',                      status_unit_format_default)
+ substs.set('HIGH_RLIMIT_NOFILE',                              conf.get('HIGH_RLIMIT_NOFILE'))
+@@ -3523,6 +3525,7 @@ status = [
+         'bash completions directory:        @0@'.format(bashcompletiondir),
+         'zsh completions directory:         @0@'.format(zshcompletiondir),
+         'extra start script:                @0@'.format(get_option('rc-local')),
++        'extra stop script:                 @0@'.format(get_option('halt-local')),
+         'debug shell:                       @0@ @ @1@'.format(get_option('debug-shell'),
+                                                               get_option('debug-tty')),
+         'TTY GID:                           @0@'.format(tty_gid),
+diff --git a/meson_options.txt b/meson_options.txt
+index fd73d5e681..18c8ce4111 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -37,6 +37,8 @@ option('telinit-path', type : 'string', value : '/lib/sysvinit/telinit',
+        description : 'path to telinit')
+ option('rc-local', type : 'string',
+        value : '/etc/rc.local')
++option('halt-local', type : 'string',
++       value : '/usr/sbin/halt.local')
+ option('initrd', type: 'boolean',
+        description : 'install services for use when running systemd in initrd')
+ 
+diff --git a/src/rc-local-generator/rc-local-generator.c b/src/rc-local-generator/rc-local-generator.c
+index 75bb875b79..7a3948e92d 100644
+--- a/src/rc-local-generator/rc-local-generator.c
++++ b/src/rc-local-generator/rc-local-generator.c
+@@ -59,12 +59,18 @@ static int run(const char *dest, const char *dest_early, const char *dest_late)
+ 
+         assert_se(arg_dest = dest);
+ 
+-        if (check_executable(RC_LOCAL_PATH) >= 0) {
++        if (check_executable(RC_LOCAL_SCRIPT_PATH_START) >= 0) {
+                 log_debug("Automatically adding rc-local.service.");
+ 
+                 r = add_symlink("rc-local.service", "multi-user.target");
+         }
+ 
++        if (check_executable(RC_LOCAL_SCRIPT_PATH_STOP) >= 0) {
++                log_debug("Automatically adding halt-local.service.");
++
++                k = add_symlink("halt-local.service", "final.target");
++        }
++
+         return r < 0 ? r : k;
+ }
+ 
+diff --git a/units/halt-local.service.in b/units/halt-local.service.in
+new file mode 100644
+index 0000000000..f6c2e9c692
+--- /dev/null
++++ b/units/halt-local.service.in
+@@ -0,0 +1,22 @@
++#  SPDX-License-Identifier: LGPL-2.1+
++#
++#  This file is part of systemd.
++#
++#  systemd is free software; you can redistribute it and/or modify it
++#  under the terms of the GNU Lesser General Public License as published by
++#  the Free Software Foundation; either version 2.1 of the License, or
++#  (at your option) any later version.
++
++[Unit]
++Description=@RC_LOCAL_SCRIPT_PATH_STOP@ Compatibility
++ConditionFileIsExecutable=@RC_LOCAL_SCRIPT_PATH_STOP@
++DefaultDependencies=no
++After=shutdown.target
++Before=final.target
++
++[Service]
++Type=oneshot
++ExecStart=@RC_LOCAL_SCRIPT_PATH_STOP@
++TimeoutSec=0
++StandardOutput=tty
++RemainAfterExit=yes
+diff --git a/units/meson.build b/units/meson.build
+index 275daad3f4..0f0e77f52c 100644
+--- a/units/meson.build
++++ b/units/meson.build
+@@ -157,6 +157,7 @@ units = [
+ in_units = [
+         ['debug-shell.service',                  ''],
+         ['emergency.service',                    ''],
++        ['halt-local.service',                   'HAVE_SYSV_COMPAT'],
+         ['kmod-static-nodes.service',            'HAVE_KMOD ENABLE_TMPFILES',
+          'sysinit.target.wants/'],
+         ['quotaon.service',                      'ENABLE_QUOTACHECK'],
+diff --git a/units/rc-local.service.in b/units/rc-local.service.in
+index 5cd1571cc7..0bcea82bed 100644
+--- a/units/rc-local.service.in
++++ b/units/rc-local.service.in
+@@ -8,16 +8,16 @@
+ #  (at your option) any later version.
+ 
+ # This unit gets pulled automatically into multi-user.target by
+-# systemd-rc-local-generator if @RC_LOCAL_PATH@ is executable.
++# systemd-rc-local-generator if @RC_LOCAL_SCRIPT_PATH_START@ is executable.
+ [Unit]
+-Description=@RC_LOCAL_PATH@ Compatibility
++Description=@RC_LOCAL_SCRIPT_PATH_START@ Compatibility
+ Documentation=man:systemd-rc-local-generator(8)
+-ConditionFileIsExecutable=@RC_LOCAL_PATH@
++ConditionFileIsExecutable=@RC_LOCAL_SCRIPT_PATH_START@
+ After=basic.target
+ 
+ [Service]
+ Type=forking
+-ExecStart=@RC_LOCAL_PATH@ start
++ExecStart=@RC_LOCAL_SCRIPT_PATH_START@ start
+ TimeoutSec=0
+ RemainAfterExit=yes
+ GuessMainPID=no
+-- 
+2.26.2
+

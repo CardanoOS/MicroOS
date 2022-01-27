@@ -1,0 +1,9 @@
+<directory name="toolbox" rev="2" vrev="1" srcmd5="7c4e9e52cd6eb438e3b052bdd0903167">
+  <serviceinfo code="succeeded" xsrcmd5="3cf637ce3a94dd968d2360100cb06a55" />
+  <entry name="_service" md5="9c0b297c37634f9b0a8dff972883f20b" size="514" mtime="1611570453" />
+  <entry name="_servicedata" md5="1c97a740bd925e200d1ea544f6e9f27b" size="225" mtime="1611570453" />
+  <entry name="microos-toolbox-2.0+git20210125.50611db.tar.xz" md5="3a260fa49e8a24c1ab85c26ef9154444" size="11440" mtime="1611570453" />
+  <entry name="toolbox.changes" md5="b724c6c7f48a959c3fee59e2116b395b" size="2713" mtime="1611570453" />
+  <entry name="toolbox.spec" md5="fa589cddc6d0622748b2d4e9fd040fe3" size="1963" mtime="1611570454" />
+  <entry name="toolboxrc.sle-micro" md5="2aa03b8a3e1d9738e6b2d3c637bb22c5" size="46" mtime="1611570454" />
+</directory>

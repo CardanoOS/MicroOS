@@ -1,0 +1,10 @@
+<directory name="cockpit" rev="2" vrev="2" srcmd5="b2b2fd474f916236ddbd9d8152d4ee35">
+  <entry name="branding_tests.patch" md5="7df5eb319468b7029467b83aba5c3e32" size="716" mtime="1611135213" />
+  <entry name="cockpit-195.12.tar.xz" md5="efe86ac150112cd0626d08560710d9a3" size="13201260" mtime="1607341171" />
+  <entry name="cockpit-rpmlintrc" md5="2abf6f0a7143cbe46ad15e4b40c9fa6d" size="248" mtime="1607341171" />
+  <entry name="cockpit.changes" md5="38263c54146c1d89bcf81125307ca747" size="478" mtime="1611135213" />
+  <entry name="cockpit.pam" md5="c996519a150a6d14e361c365c2150d69" size="268" mtime="1607341171" />
+  <entry name="cockpit.permissions" md5="dabf2dc6286152acf45c4f5bfe525424" size="91" mtime="1607341171" />
+  <entry name="cockpit.spec" md5="7b101939d1dfae12085b875aaf28a9d3" size="29978" mtime="1611135213" />
+  <entry name="cockpit_assets.tar.gz" md5="b5f96a62b4b42f296e148b8e7a81cf1f" size="13104" mtime="1611135213" />
+</directory>

@@ -1,0 +1,5 @@
+<directory name="systemd-presets-branding-SLE" rev="1" vrev="1" srcmd5="2a94447c79e52802495de861fa0dd304">
+  <entry name="default-SLE.preset" md5="cc63476a1afab730a869ee6b3ad5a824" size="408" mtime="1594659129" />
+  <entry name="systemd-presets-branding-SLE.changes" md5="5c348e4c835809ed8ce9435019fbf5fb" size="17863" mtime="1604391125" />
+  <entry name="systemd-presets-branding-SLE.spec" md5="b6e9c48f34d19388d38c719036eba28a" size="3181" mtime="1587456518" />
+</directory>

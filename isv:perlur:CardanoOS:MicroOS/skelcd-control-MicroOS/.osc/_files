@@ -1,0 +1,5 @@
+<directory name="skelcd-control-MicroOS" rev="7" vrev="2" srcmd5="40951ee00200c72db7233fcc33bdb61b">
+  <entry name="skelcd-control-MicroOS-15.2.3.tar.bz2" md5="9b54ece0ae5a429d28901becbb2a3013" size="10496" mtime="1606915161" />
+  <entry name="skelcd-control-MicroOS.changes" md5="18a60aabb253ad3b9bb16edec906415f" size="2962" mtime="1606844134" />
+  <entry name="skelcd-control-MicroOS.spec" md5="0233268a27aad5ab8ec2e674b48fa0d0" size="5920" mtime="1606844134" />
+</directory>
